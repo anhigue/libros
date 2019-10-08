@@ -26,11 +26,16 @@ sans-serif;
     background: $back;
     //color: black;
     //font-family: Arial;
-    height: 100vh;
+    //height: 100vh;
 }
 
 .titles {
     font-family: $font-import;
+}
+
+.padding {
+    padding: 5px;
+    margin: 10px;
 }
 
 #responsive-menu,
@@ -46,14 +51,32 @@ footer {
     }
 }
 
+.page {
+    background-color: white !important;
+}
+
 
 /* mixins */
 
 @mixin customButon($color,
-$radius) {
+$radius,
+$alto,
+$ancho) {
     background: $color;
-    border-radius: $radius,
+    border-radius: $radius;
+    * {
+        height: $alto;
+        width: auto;
+        height: $ancho;
+    }
 }
 
 
 /* selectores */
+
+.button-round {
+    @include customButon($secondary-twoo,
+    15px,
+    5px,
+    5px);
+}

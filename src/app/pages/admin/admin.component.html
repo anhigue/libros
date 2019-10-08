@@ -1,11 +1,104 @@
 <div class="contenido">
-    <div class="row">
-        <div class="large-1 mediul-1 column hide-for-small-only">
-        </div>
-        <div class="large-10 mediul-10 small-12 column">
-
-        </div>
-        <div class="large-1 mediul-1 column hide-for-small-only">
-        </div>
+    <div class="row columns padding">
+        <h4 class="text-center titles"> Panel de administración</h4>
+    </div>
+    <div class="row columns">
+        <h4 class="text-left titles">
+            Categorias
+            <i class="material-icons" (click)="showA();">add_box</i>
+        </h4>
+        <table class="hover unstriped" *ngIf="showComponentA">
+            <thead>
+                <tr>
+                    <th width="200">#</th>
+                    <th>Categoria</th>
+                    <th width="150">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td></td>
+                    <td>
+                        div.button
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <div class="row columns">
+        <h4 class="text-left titles">
+            Sub categorias
+            <i class="material-icons" (click)="showB();">add_box</i>
+        </h4>
+        <table class="hover unstriped" *ngIf="showComponentB">
+            <thead>
+                <tr>
+                    <th width="200">#</th>
+                    <th>Sub categoria</th>
+                    <th width="150">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td></td>
+                    <td>
+                        div.button
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <div class="row columns">
+        <h4 class="text-left titles">
+            Roles
+            <i class="material-icons" (click)="showC();">add_box</i>
+        </h4>
+        <table class="hover unstriped" *ngIf="showComponentC">
+            <thead>
+                <tr>
+                    <th width="200">#</th>
+                    <th>Rol</th>
+                    <th width="150">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td></td>
+                    <td>
+                        div.button
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <div class="row columns">
+        <h4 class="text-left titles">
+            Generos
+            <i class="material-icons" (click)="showD();">add_box</i>
+        </h4>
+        <table class="hover unstriped" *ngIf="showComponentD">
+            <thead>
+                <tr>
+                    <th width="200">#</th>
+                    <th>Genero</th>
+                    <th width="150">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td></td>
+                    <td>
+                        div.button
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
