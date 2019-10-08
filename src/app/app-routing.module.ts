@@ -5,6 +5,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { ModerationComponent } from './pages/moderation/moderation.component';
 import { HomeComponent } from './pages/home/home.component';
+import { LoginRegisterComponent } from './pages/login-register/login-register.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'moderation',
     component: ModerationComponent
+  },
+  {
+    path: 'login',
+    component: LoginRegisterComponent
   }
 ];
 

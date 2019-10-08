@@ -31,6 +31,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ArticleComponent } from './pages/article/article.component';
 import { ModerationComponent } from './pages/moderation/moderation.component';
 import { HomeComponent } from './pages/home/home.component';
+import { LoginRegisterComponent } from './pages/login-register/login-register.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { HomeComponent } from './pages/home/home.component';
     ProfileComponent,
     ArticleComponent,
     ModerationComponent,
-    HomeComponent
+    HomeComponent,
+    LoginRegisterComponent
   ],
   imports: [
     BrowserModule,
