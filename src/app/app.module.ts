@@ -32,6 +32,7 @@ import { ArticleComponent } from './pages/article/article.component';
 import { ModerationComponent } from './pages/moderation/moderation.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginRegisterComponent } from './pages/login-register/login-register.component';
+import { AsksComponent } from './pages/asks/asks.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { LoginRegisterComponent } from './pages/login-register/login-register.co
     ArticleComponent,
     ModerationComponent,
     HomeComponent,
-    LoginRegisterComponent
+    LoginRegisterComponent,
+    AsksComponent
   ],
   imports: [
     BrowserModule,
