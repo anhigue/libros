@@ -25,12 +25,24 @@ import {
 } from 'ngx-foundation';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { ArticleComponent } from './pages/article/article.component';
+import { ModerationComponent } from './pages/moderation/moderation.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    CategoriesComponent,
+    AdminComponent,
+    ProfileComponent,
+    ArticleComponent,
+    ModerationComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
