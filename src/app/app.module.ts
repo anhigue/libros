@@ -23,15 +23,19 @@ import {
   TooltipModule,
   TypeaheadModule,
 } from 'ngx-foundation';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AccordionModule.forRoot()
+    BsDropdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

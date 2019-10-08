@@ -3,3 +3,14 @@
 // Import Foundation for Sites
 // See https://foundation.zurb.com/sites/docs/sass.html for detailed info.
 // Import Angular ngx-foundation Framework Added Styles
+@import '~foundation-sites/scss/foundation';
+@include foundation-everything;
+@import "~ngx-foundation/assets/scss/main";
+
+/* variables generales */
+
+$primary: #FFF8F0;
+$secondary: #9E2B25;
+$primary-twoo: #51355A;
+$secondary-twoo: #2A0C4E;
+$back: #F5F8DE;
