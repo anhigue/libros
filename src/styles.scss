@@ -3,7 +3,7 @@
 // Import Foundation for Sites
 // See https://foundation.zurb.com/sites/docs/sass.html for detailed info.
 // Import Angular ngx-foundation Framework Added Styles
-@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lobster|Notable&display=swap');
 @import '~foundation-sites/scss/foundation';
 @include foundation-everything;
 @import "~ngx-foundation/assets/scss/main";
@@ -17,6 +17,8 @@ $secondary-twoo: #2A0C4E;
 $back: #F5F8DE;
 $font-import: 'Lobster',
 cursive;
+$font-import-b: 'Notable',
+sans-serif;
 
 /* clases dentro de todo el sistema*/
 
@@ -29,6 +31,19 @@ cursive;
 
 .titles {
     font-family: $font-import;
+}
+
+#responsive-menu,
+footer {
+    background-color: $secondary !important;
+    padding: 2px;
+    a {
+        color: black;
+    }
+    ul {
+        background-color: $secondary !important;
+        font-family: $font-import-b;
+    }
 }
 
 

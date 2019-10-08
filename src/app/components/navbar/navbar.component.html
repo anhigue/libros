@@ -21,10 +21,8 @@
                         </li>
                     </ul>
                 </li>
-                <li dropdown #dropdownText="bs-dropdown" triggers="mouseover" class="is-dropdown-submenu-parent">
-                    <a dropdownToggle (click)="false">Categorias</a>
-                    <ul class="menu vertical" *dropdownMenu class="menu is-dropdown-submenu">
-                    </ul>
+                <li>
+                    <a>Categorias</a>
                 </li>
                 <li><a [routerLink]="['/about']" routerLinkActive="router-link-active">¿Quiénes somos?</a></li>
                 <li><a [routerLink]="['/about']" routerLinkActive="router-link-active">Historia</a></li>
