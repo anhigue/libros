@@ -11,7 +11,7 @@ export class AdminService {
   private base: string;
   constructor(private http: HttpClient) {
     this.headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    this.base = 'http://localhost/articulos/routes/';
+    this.base = 'http://localhost/api-libros/routes/';
   }
 
   // obtiene los roles del sistema
@@ -83,4 +83,26 @@ export class AdminService {
   getTipoSub() {
     return this.http.get(this.base + 'usuarios/get.tipo.php', { headers: this.headers });
   }
+
+  // crear un nuevo usuario por medio de un procedimiento almacenado devolviendo un el id del usuario
+  // {"nombre":"Hugo","apellido": "higueros","genero": 1,"correo": "hugo@twitter.com","pass": "hugo","tipo": 1}
+  createUsuario(user) {
+    return this.http.post(this.base + 'usuarios/registro.php', user, { headers: this.headers });
+  }
+
+  // reliza la autentificación del usuario {"correo":"hugo@twitter.com", "pass": "hugo"}
+  loginUsuario(user) {
+    return this.http.post(this.base + 'usuarios/login.php', user, { headers: this.headers });
+  }
+
+  // eliminar una sub categoria
+  deleteSubCat(subcat) {
+    return this.http.post(this.base + 'administracion/delete.sub.cat.php', subcat, { headers: this.headers });
+  }
+
+  // eliminar una categoria {"id_categoria": 4}
+  deleteCat(cat) {
+    return this.http.post(this.base + 'administracion/delete.cat.php', cat, { headers: this.headers });
+  }
+
 }
