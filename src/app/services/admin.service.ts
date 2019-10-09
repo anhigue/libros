@@ -63,4 +63,24 @@ export class AdminService {
   deleteArticulo(articulo: any) {
     return this.http.post(this.base + 'articulos/delete.php', articulo, { headers: this.headers });
   }
+
+  // obtiene el ultimo articulo creado
+  getMaxArticulo() {
+    return this.http.get(this.base + 'articulos/get.max.php', { headers: this.headers });
+  }
+
+  // obtiene todos los articulos
+  getAllArticulos() {
+    return this.http.get(this.base + 'articulos/get.all.php', { headers: this.headers });
+  }
+
+  // crear una nueva subscripcion
+  createSubscripcion(sub) {
+    return this.http.post(this.base + 'usuarios/create.sub.php', sub, { headers: this.headers });
+  }
+
+  // Obtener todos los tipos de subscripcion
+  getTipoSub() {
+    return this.http.get(this.base + 'usuarios/get.tipo.php', { headers: this.headers });
+  }
 }
