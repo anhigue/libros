@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { AdminService } from '../../services/admin.service';
+import { BsModalRef, BsModalService } from 'ngx-foundation';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-admin',
@@ -7,56 +10,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  showComponentA: boolean;
-  showComponentB: boolean;
-  showComponentC: boolean;
-  showComponentD: boolean;
+  roles: any;
+  generos: any;
+  modalRef: BsModalRef;
+  categorias: any;
+  subcat: any;
+  usuarios: any;
 
-  constructor() {
-    this.showComponentA = true;
-    this.showComponentB = true;
-    this.showComponentC = true;
-    this.showComponentD = true;
+  constructor(private admin: AdminService, private modalService: BsModalService) {
+    this.get();
   }
 
   ngOnInit() {
   }
 
-  show(component: boolean) {
-    if (!component) {
-       return component = true;
-    } else {
-      return component = false;
+  openModal(template: TemplateRef<any>, u ?: any, tipo?: number) {
+    this.modalRef = this.modalService.show(template, {class: 'tiny'});
+
+    if (tipo === 4) {
+      console.log(u);
     }
   }
 
-  showA() {
-    if (!this.showComponentA) {
-       return this.showComponentA = true;
-    } else {
-      return this.showComponentA = false;
-    }
-  }
-  showB() {
-    if (!this.showComponentB) {
-       return this.showComponentB = true;
-    } else {
-      return this.showComponentB = false;
-    }
-  }
-  showC() {
-    if (!this.showComponentC) {
-       return this.showComponentC = true;
-    } else {
-      return this.showComponentC = false;
-    }
+  async get() {
+    await this.admin.getRol().toPromise().then( res => this.roles = res);
+    await this.admin.getGenero().toPromise().then( res => this.generos = res);
+    await this.admin.getCategoriaSub().toPromise().then( (res: object[]) => {
+      this.categorias = res;
+    });
+    await this.admin.getCategoriaSub().toPromise().then( (res: object[]) => {
+      // tslint:disable-next-line:no-shadowed-variable
+      this.subcat = res.filter( (res: any) => res.nombre_sub_categoria !== null);
+    });
+    await this.admin.getUsuarios().toPromise().then( res => this.usuarios = res);
   }
 
-  showD() {
-    if (!this.showComponentD) {
-       return this.showComponentD = true;
-    } else {
-      return this.showComponentD = false;
-    }
-  }
 }

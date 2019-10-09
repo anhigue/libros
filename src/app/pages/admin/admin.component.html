@@ -1,104 +1,136 @@
-<div class="contenido">
-    <div class="row columns padding">
-        <h4 class="text-center titles"> Panel de administración</h4>
-    </div>
-    <div class="row columns">
-        <h4 class="text-left titles">
-            Categorias
-            <i class="material-icons" (click)="showA();">add_box</i>
-        </h4>
-        <table class="hover unstriped" *ngIf="showComponentA">
-            <thead>
-                <tr>
-                    <th width="200">#</th>
-                    <th>Categoria</th>
-                    <th width="150">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td></td>
-                    <td>
-                        div.button
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <hr>
-    <div class="row columns">
-        <h4 class="text-left titles">
-            Sub categorias
-            <i class="material-icons" (click)="showB();">add_box</i>
-        </h4>
-        <table class="hover unstriped" *ngIf="showComponentB">
-            <thead>
-                <tr>
-                    <th width="200">#</th>
-                    <th>Sub categoria</th>
-                    <th width="150">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td></td>
-                    <td>
-                        div.button
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <hr>
-    <div class="row columns">
-        <h4 class="text-left titles">
-            Roles
-            <i class="material-icons" (click)="showC();">add_box</i>
-        </h4>
-        <table class="hover unstriped" *ngIf="showComponentC">
-            <thead>
-                <tr>
-                    <th width="200">#</th>
-                    <th>Rol</th>
-                    <th width="150">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td></td>
-                    <td>
-                        div.button
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <hr>
-    <div class="row columns">
-        <h4 class="text-left titles">
-            Generos
-            <i class="material-icons" (click)="showD();">add_box</i>
-        </h4>
-        <table class="hover unstriped" *ngIf="showComponentD">
-            <thead>
-                <tr>
-                    <th width="200">#</th>
-                    <th>Genero</th>
-                    <th width="150">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td></td>
-                    <td>
-                        div.button
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<div class="page">
+    <accordion>
+        <accordion-group [isDisabled]="true" heading="Panel de administración">
+        </accordion-group>
+        <accordion-group heading="Categorias" [isOpen]="true">
+            <table class="hover unstriped">
+                <thead>
+                    <tr>
+                        <th width="200">#</th>
+                        <th>Categoria</th>
+                        <th width="150">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="button-group">
+                                <div class="button-group">
+                                    <i class="material-icons" (click)="openModal(deleteElement,null,1);">delete</i>
+                                    <i class="material-icons">edit</i>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </accordion-group>
+        <accordion-group heading="Sub Categorias">
+            <table class="hover unstriped">
+                <thead>
+                    <tr>
+                        <th width="200">#</th>
+                        <th>Sub categoria</th>
+                        <th width="150">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let u of subcat">
+                        <td>{{u.id_sub_categoria}}</td>
+                        <td>{{u.nombre_sub_categoria}}</td>
+                        <td>
+                            <div class="button-group">
+                                <i class="material-icons" (click)="openModal(deleteElement,null,2);">delete</i>
+                                <i class="material-icons">edit</i>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </accordion-group>
+        <accordion-group heading="Roles">
+            <table class="hover unstriped">
+                <thead>
+                    <tr>
+                        <th width="200">#</th>
+                        <th>Rol</th>
+                        <th width="150">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let u of roles">
+                        <td>{{u.id_tipo_usuario}}</td>
+                        <td>{{u.tipo_usuario}}</td>
+                        <td>
+                            <div class="button-group">
+                                <i class="material-icons" (click)="openModal(deleteElement,u,3);">delete</i>
+                                <i class="material-icons">edit</i>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </accordion-group>
+        <accordion-group heading="Usuarios">
+            <table class="hover unstriped">
+                <thead>
+                    <tr>
+                        <th width="200">#</th>
+                        <th>Nombre</th>
+                        <th width="150">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let u of usuarios">
+                        <td>{{u.fk_id_usuario}}</td>
+                        <td>{{u.nombre_usuario}} {{u.apellido_usuario}}</td>
+                        <td>
+                            <td>
+                                <div class="button-group">
+                                    <i class="material-icons" (click)="openModal(deleteElement,u,4);">delete</i>
+                                    <i class="material-icons">edit</i>
+                                </div>
+                            </td>
+                    </tr>
+                </tbody>
+            </table>
+        </accordion-group>
+        <accordion-group heading="Generos">
+            <table class="hover unstriped">
+                <thead>
+                    <tr>
+                        <th width="200">#</th>
+                        <th>Generos</th>
+                        <th width="150">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let u of generos">
+                        <td>{{u.id_genero}}</td>
+                        <td>{{u.nombre_genero}}</td>
+                        <td>
+                            <div class="button-group">
+                                <div class="button-group">
+                                    <i class="material-icons" (click)="openModal(deleteElement,null,1);">delete</i>
+                                    <i class="material-icons">edit</i>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </accordion-group>
+    </accordion>
 </div>
+
+<!-- Modales para eliminar datos -->
+<ng-template #deleteElement>
+    <h4>Eliminar</h4>
+    <hr>
+    <p>Estas seguro que deseas eliminarlo.</p>
+    <button class="close-button" (click)="modalRef.hide()" aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</ng-template>
