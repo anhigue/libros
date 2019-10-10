@@ -1,11 +1,67 @@
 <div class="contenido">
-    <div class="row">
-        <div class="large-1 mediul-1 column hide-for-small-only">
-        </div>
-        <div class="large-10 mediul-10 small-12 column">
+    <div id="backgroundmain">
+        <div class="row">
+            <div class="large.12 columns"></div>
 
         </div>
-        <div class="large-1 mediul-1 column hide-for-small-only">
-        </div>
     </div>
-</div>
+
+    <div class="row">
+        <div class="large.12 columns">
+
+            <form class="log-in-form">
+                <h4 class="text-center">Login with your email account</h4>
+                <label>Email
+                    <input type="email" placeholder="somebody@example.com">
+                </label>
+                <label>Password
+                    <input type="password" placeholder="Password">
+                </label>
+                <input id="show-password" type="checkbox"><label for="show-password">Show password</label>
+                <p><input type="submit" class="button expanded" value="Log in"></p>
+                <p class="text-center"><a href="#">Forgot your password?</a></p>
+                <p class="text-center">¿No tienes cuenta? Continua, desliza abajo para unirte</p>
+            </form>
+        </div>
+
+
+        <form class="log-in-form">
+            <h4 class="text-center">Crea tu cuenta</h4>
+            <label>Nombre
+                <input type="text" placeholder="Nombre de usuario">
+            </label>
+            <label>Apellido
+                <input type="text" placeholder="Apellido usuario">
+            </label>
+            <label>Email
+                <input type="email" placeholder="somebody@example.com">
+            </label>
+            <label>Password
+                <input type="password" placeholder="Password">
+            </label>
+            <input id="show-password" type="checkbox"><label for="show-password">Show password</label>
+            <label>Genero
+                <select>
+                    <option value="Premium">Masculino</option>
+                    <option value="Gratuita">Femenino</option>
+                    <option value="Gratuita">Otros</option>
+                </select>
+            </label>
+            <label>Tipo de usuario
+                <select>
+                    <option value="Visitante">Visitante</option>
+                    <option value="Autor">Autor</option>
+                    <option value="Moderador">Moderador</option>
+                    <option value="Administrador">Administrador</option>
+                </select>
+            </label>
+            <label>Subscripcion
+                <select>
+                    <option value="Premium">Premium</option>
+                    <option value="Gratuita">Gratuita</option>
+                </select>
+            </label>
+            <p><input type="submit" class="button expanded" value="Registrarte"></p>
+
+        </form>
+    </div>
