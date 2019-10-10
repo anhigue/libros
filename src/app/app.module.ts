@@ -36,6 +36,8 @@ import { AsksComponent } from './pages/asks/asks.component';
 import { AboutComponent } from './pages/about/about.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdsComponent } from './pages/ads/ads.component';
+import { FormsModule } from '@angular/forms';
+import { CreateComponent } from './pages/create/create.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { AdsComponent } from './pages/ads/ads.component';
     AsksComponent,
     AboutComponent,
     AdsComponent
+    CreateComponent
   ],
   imports: [
     BrowserModule,
@@ -59,9 +62,22 @@ import { AdsComponent } from './pages/ads/ads.component';
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     AccordionModule.forRoot(),
+    PaginationModule.forRoot(),
     CarouselModule.forRoot(),
-    HttpClientModule
-    
+    AlertModule.forRoot(),
+    ButtonsModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    ProgressbarModule.forRoot(),
+    RatingModule.forRoot(),
+    SortableModule.forRoot(),
+    TabsModule.forRoot(),
+    TimepickerModule.forRoot(),
+    TooltipModule.forRoot(),
+    TypeaheadModule.forRoot(),
+    CollapseModule.forRoot(),
+    OffcanvasModule.forRoot(),
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

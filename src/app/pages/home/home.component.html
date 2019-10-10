@@ -1,106 +1,46 @@
-<div class="contenido">
-    <div id="backgroundmain">
-        <div class="row">
-            <div class="column show-for-small-up">
+<div class="contenido row columns">
+    <div class="about">
+        <div id="backgroundmain">
+            <div class="row">
+                <div class="large.12 columns"></div>
+
             </div>
         </div>
     </div>
     <hr>
-    <section id="destacados">
+    <section id="destacados" class="row columns">
         <div class="row column">
-            <h4 style="margin: 0  px;" class="text-center">Destacados</h4>
+            <h4 style="margin: 0  px;" class="text-center titles sect">Destacados</h4>
         </div>
         <hr>
         <div class="row small-up-1 medium-up-2 large-up-4">
-            <div class="column show-for-small-up  ">
-
-                <img src="https://i.blogs.es/e0416a/lexuuusss/2560_3000.jpg" alt="image for article" />
-                <h2><a href="articulo1.html" [routerLink]="[ '/about']">Carros revolucionando la industria automotriz</a></h2>
-                <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod
-                    semper,
-                    magna diam.</p>
-
+            <div class="column show-for-small-up  " *ngFor="let u of destacados">
+                <img src="{{u.imagenes[0].path}}" alt="image for article" />
+                <h2 *ngFor="let v of u.articulo"><a (click)="updateVista(v);">{{v.titulo_articulo}}</a></h2>
+                <p>Ref Link: <a href="{{u.links[0].link_articulo}}" target="_blank">{{u.links[0].link_articulo}}</a></p>
             </div>
-            <div class="column show-for-small-up">
-                <img src="https://www.eluniverso.com/sites/default/files/styles/powgallery_1024/public/fotos/2015/09/rugby.jpg?itok=s_EUz2XQ"
-                    alt="image for article" />
-                <h2><a href="articulo2.html">Comienza el Munidal de Rugby, Reto: Japon</a></h2>
-                <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod
-                    semper,
-                    magna diam.</p>
-
-            </div>
-            <div class="column show-for-small-up">
-                <img src="https://e00-marca.uecdn.es/assets/multimedia/imagenes/2018/04/20/15241817786811.png"
-                    alt="image for article" />
-                <h2><a href="articulo3.html">Se inaugura la temporada 100 en la NFL</a></h2>
-                <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod
-                    semper,
-                    magna diam.</p>
-
-            </div>
-            <div class="column show-for-small-up">
-                <img src="https://tv.orange.es/UpImages/3457/orangetvfutbolx_5a85dbcdc3975659590006c0d.jpg"
-                    alt="image for article" />
-                <h2><a href="#">Lesion impide buen rendimiento del Argentino</a></h2>
-                <p>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod
-                    semper,
-                    magna diam.</p>
-            </div>
-            <div class="column show-for-small-up">
-                <a href="subHCat.html" input="submit" class="button hollow tiny expanded">ir a categorias
-                </a>
-            </div>
-            <div class="column show-for-small-up">
-                <a href="subCat.html" input="submit" class="button hollow tiny expanded">ir a categorias
-                </a>
-            </div>
-
         </div>
     </section>
     <hr>
     <br />
-
-
-    <div class="row">
-        <div class="large-12 columns">
-            <article>
-                <div class="row">
-
-                    <div class="large-6 columns">
-                        <h3><a href="#">Conoce la ultima tecnología inmersa en el mundo automovilistico</a></h3>
-                        <p>
-                            <span><i class="fi-torso"> anonimo &nbsp;&nbsp;</i></span>
-                            <span><i class="fi-calendar"> xx/xx/19 &nbsp;&nbsp;</i></span>
-                            <span class="label success">Premium</span>
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum
-                            delectus
-                            aperiam nesciunt magni facilis ullam.</p>
-                    </div>
-                    <div class="large-6 columns">
-                        <p><img src="https://cde.peru.com//ima/0/1/8/9/1/1891304/924x530/ces-2019.jpg" alt="image for article" alt="article preview image"></p>
-                    </div>
-                </div>
-
-
+    <section class="row columns">
+        <h4 class="titles text-center">Te podría interesar</h4>
+        <div class="callout">
+            <article *ngFor="let u of articulosShow">
                 <div class="row">
                     <div class="large-6 columns">
                         <p><img src="https://img.uefa.com/imgml/uefacom/ucl/social/og-default.jpg" alt="image for article" alt="article preview image"></p>
                     </div>
                     <div class="large-6 columns">
-                        <h3><a href="#">Empieza La UEFA Champions league</a></h3>
-                        <p>
-                            <span><i class="fi-torso"> anonimo &nbsp;&nbsp;</i></span>
-                            <span><i class="fi-calendar"> xx/xx/19 &nbsp;&nbsp;</i></span>
-                            <span class="label success2">Gratuito</span>
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum
-                            delectus
-                            aperiam nesciunt magni facilis ullam.</p>
+                        <div *ngFor="let v of u.articulo">
+                            <h3><a (click)="updateVista(v);">{{v.titulo_articulo}}</a></h3>
+                            <h5><span class="label success2">Creado el: {{ v.fecha_creacion}}</span> <span class="label success2">Publicado el: {{ v.fecha_publicacion}}</span></h5>
+                        </div>
+                        <p>{{u.parrafos[0].parrafo_articulo}}</p>
                     </div>
                 </div>
             </article>
         </div>
-    </div>
+        <pagination [totalItems]="showNmber" (pageChanged)="pageChanged($event);" (click)="changePage();" class="text-center"></pagination>
+    </section>
 </div>

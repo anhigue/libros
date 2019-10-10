@@ -11,7 +11,7 @@ export class AdminService {
   private base: string;
   constructor(private http: HttpClient) {
     this.headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    this.base = 'http://localhost/articulos/routes/';
+    this.base = 'http://localhost/api-libros/routes/';
   }
 
   // obtiene los roles del sistema
@@ -82,5 +82,66 @@ export class AdminService {
   // Obtener todos los tipos de subscripcion
   getTipoSub() {
     return this.http.get(this.base + 'usuarios/get.tipo.php', { headers: this.headers });
+  }
+
+  // crear un nuevo usuario por medio de un procedimiento almacenado devolviendo un el id del usuario
+  // {"nombre":"Hugo","apellido": "higueros","genero": 1,"correo": "hugo@twitter.com","pass": "hugo","tipo": 1}
+  createUsuario(user) {
+    return this.http.post(this.base + 'usuarios/registro.php', user, { headers: this.headers });
+  }
+
+  // reliza la autentificación del usuario {"correo":"hugo@twitter.com", "pass": "hugo"}
+  loginUsuario(user) {
+    return this.http.post(this.base + 'usuarios/login.php', user, { headers: this.headers });
+  }
+
+  // eliminar una sub categoria
+  deleteSubCat(subcat) {
+    return this.http.post(this.base + 'administracion/delete.sub.cat.php', subcat, { headers: this.headers });
+  }
+
+  // eliminar una categoria {"id_categoria": 4}
+  deleteCat(cat) {
+    return this.http.post(this.base + 'administracion/delete.cat.php', cat, { headers: this.headers });
+  }
+
+  // crear una categoria {"nombre": "Tecnologia"}
+  createCat(cat) {
+    return this.http.post(this.base + 'administracion/create.cat.php', cat, { headers: this.headers });
+  }
+
+  // crear una sub categoria
+  createSubCat(cat) {
+    return this.http.post(this.base + 'administracion/create.sub.cat.php', cat, { headers: this.headers });
+  }
+
+  // obtener los cuatro articulos destacados
+  getDestacados() {
+    return this.http.get(this.base + 'articulos/get.destacado.php', { headers: this.headers });
+  }
+
+  // obtiene los articulos por offset y limite {"limit": 1, "offset": 0}
+  getArticuloLO(rango) {
+    return this.http.post(this.base + 'articulos/get.limit.offset.php', rango, { headers: this.headers });
+  }
+
+  // obtiene el numero de aritucolos
+  getCountArticulo() {
+    return this.http.get(this.base + 'articulos/get.count.php', { headers: this.headers });
+  }
+
+  // obtener la informacion de un solo articulo
+  getArticulo(articulo) {
+    return this.http.post(this.base + 'articulos/read.one.php', articulo, { headers: this.headers });
+  }
+
+  // obtiene un usuario a partir de su correo
+  getUserId(correo) {
+    return this.http.post(this.base + 'usuarios/readOne.php', correo, { headers: this.headers });
+  }
+
+  // actualiza la visita del articulo {"id_articulo": 1}
+  updateVisita(id) {
+    return this.http.post(this.base + 'articulos/visita.update.php', id, { headers: this.headers });
   }
 }

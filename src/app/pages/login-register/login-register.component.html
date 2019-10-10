@@ -1,67 +1,84 @@
-<div class="contenido">
-    <div id="backgroundmain">
+<div class="contenido row columns">
+    <div class="padre">
+        <div class="hijo">
+            <div class="card">
+                <div class="card-body">
+                    <form class="log-in-form">
+                        <h4 class="text-center titles">Ingresar</h4>
+                        <label>Correo </label>
+                        <input type="email" placeholder="example@example.com" [(ngModel)]="correoLog" name="correoLog">
+                        <label>Contraseña
+                                <input type="password" placeholder="Ingresa tu contraseña aquí" [(ngModel)]="passLog" name="passLog">
+                            </label>
+                        <button type="submit" class="button expanded success" value="Ingresar" (click)="login();">
+                            <i class="material-icons">
+                                lock_open
+                                </i>
+                        </button>
+                        <p class="text-center"><a>Olvidaste tu contraseña?</a></p>
+                        <p class="text-center"><a (click)="openModal(registro);">¿No tienes cuenta? Creala...</a></p>
+                    </form>
+                </div>
+            </div>
+            <div *ngIf="showAlert">
+                <alert type="alert" (click)="donShow();">
+                    <strong>No hemos podido hacer login </strong> Asegurate de ingresar los datos correctos!
+                </alert>
+            </div>
+            <div *ngIf="showAlertB">
+                <alert type="success" (click)="donShow();">
+                    <strong>Registro exitoso </strong> Se te ha enviado un correo para que activez tu cuenta!
+                </alert>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #registro>
+    <h4 class="text-center titles">Registrate</h4>
+    <form class="log-in-form">
         <div class="row">
-            <div class="large.12 columns"></div>
-
+            <div class="columns large-6 medium-6 small-6">
+                <label>Nombre
+                    <input type="text" placeholder="Nombre de usuario" [(ngModel)]="nombre" name="nombre">
+                </label>
+            </div>
+            <div class="columns large-6 medium-6 small-6">
+                <label>Apellido
+                    <input type="text" placeholder="Apellido usuario" [(ngModel)]="apellido" name="apellido">
+                </label>
+            </div>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="large.12 columns">
-
-            <form class="log-in-form">
-                <h4 class="text-center">Login with your email account</h4>
+        <div class="row">
+            <div class="columns large-6 medium-6 small-6">
                 <label>Email
-                    <input type="email" placeholder="somebody@example.com">
+                    <input type="email" placeholder="somebody@example.com" [(ngModel)]="correo" name="correo">
                 </label>
+            </div>
+            <div class="columns large-6 medium-6 small-6">
                 <label>Password
-                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Password" [(ngModel)]="pass" name="pass">
                 </label>
-                <input id="show-password" type="checkbox"><label for="show-password">Show password</label>
-                <p><input type="submit" class="button expanded" value="Log in"></p>
-                <p class="text-center"><a href="#">Forgot your password?</a></p>
-                <p class="text-center">¿No tienes cuenta? Continua, desliza abajo para unirte</p>
-            </form>
+            </div>
         </div>
-
-
-        <form class="log-in-form">
-            <h4 class="text-center">Crea tu cuenta</h4>
-            <label>Nombre
-                <input type="text" placeholder="Nombre de usuario">
-            </label>
-            <label>Apellido
-                <input type="text" placeholder="Apellido usuario">
-            </label>
-            <label>Email
-                <input type="email" placeholder="somebody@example.com">
-            </label>
-            <label>Password
-                <input type="password" placeholder="Password">
-            </label>
-            <input id="show-password" type="checkbox"><label for="show-password">Show password</label>
-            <label>Genero
-                <select>
-                    <option value="Premium">Masculino</option>
-                    <option value="Gratuita">Femenino</option>
-                    <option value="Gratuita">Otros</option>
-                </select>
-            </label>
+        <div class="row columns">
+            <label>Genero </label>
+            <select [(ngModel)]="genero" name="genero">
+                        <option value="{{u.id_genero}}" *ngFor="let u of generos">{{u.nombre_genero}}</option>
+            </select>
+        </div>
+        <div class="row columns">
             <label>Tipo de usuario
-                <select>
-                    <option value="Visitante">Visitante</option>
-                    <option value="Autor">Autor</option>
-                    <option value="Moderador">Moderador</option>
-                    <option value="Administrador">Administrador</option>
-                </select>
-            </label>
-            <label>Subscripcion
-                <select>
-                    <option value="Premium">Premium</option>
-                    <option value="Gratuita">Gratuita</option>
-                </select>
-            </label>
-            <p><input type="submit" class="button expanded" value="Registrarte"></p>
-
-        </form>
-    </div>
+                    <select [(ngModel)]="tipo" name="tipo">
+                        <option value="{{u.id_tipo_usuario}}" *ngFor="let u of roles">{{u.tipo_usuario}}</option>
+                    </select>
+                </label>
+        </div>
+        <div class="row columns">
+            <button class="button expanded" value="Registrarte" (click)="reg();">Registrarse</button>
+        </div>
+    </form>
+    <button class="close-button" (click)="modalRef.hide()" aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</ng-template>

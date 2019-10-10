@@ -11,12 +11,13 @@ import { AboutComponent } from './pages/about/about.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { ArticleComponent } from './pages/article/article.component';
 import { AdsComponent } from './pages/ads/ads.component';
-
+import { CreateComponent } from './pages/create/create.component';
 
 const routes: Routes = [
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    pathMatch: 'full'
   },
   {
     path: '',
@@ -24,7 +25,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'profile',
+    path: 'profile/:id',
     component: ProfileComponent
   },
   {
@@ -48,16 +49,25 @@ const routes: Routes = [
     component: AboutComponent
   },
   {
+    path: 'article/:id',
+    component: ArticleComponent
+  },
+  {
     path: 'categories',
     component: CategoriesComponent
   },
   {
-    path: 'article',
-    component: ArticleComponent
-  },
-  {
     path: 'ads',
     component: AdsComponent
+  },
+  {
+    path: 'create/article',
+    component: CreateComponent
+  },
+  {
+    path: '#',
+    redirectTo: 'home',
+    pathMatch: 'full'
   }
 ];
 

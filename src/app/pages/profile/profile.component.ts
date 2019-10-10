@@ -6,11 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  isCollapsed = false;
-  constructor() { }
+  usuario: any;
+  constructor() {
+    this.getUsuario();
+  }
 
   ngOnInit() {
     
+  }
+
+  getUsuario() {
+    this.usuario = JSON.parse(localStorage.getItem('usuario'));
   }
 
 }
