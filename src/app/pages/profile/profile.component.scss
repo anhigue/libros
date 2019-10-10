@@ -1,0 +1,53 @@
+  
+  
+  .boton-foto-perfil {
+    border-radius: 100%;
+    background-color: transparent;
+  }
+  
+  .boton-foto-perfil:hover {
+    background-color: transparent;
+  }
+  
+  
+  .profile {
+    border-radius: 10px;
+  }
+  
+  .profile-userpic img {
+    width: 200px;
+    height: 180px;
+    border-radius: 50%;
+  }
+  
+  .profile-usertitle {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .profile-usertitle-name {
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+  }
+  
+  .profile-usertitle-type {
+    text-transform: uppercase;
+    color: black;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  .profile-userbuttons {
+    text-align: center;
+    margin: 10%;
+    padding: 10px;
+  }
+  
+  .profile-userbuttons .button {
+    text-transform: uppercase;
+    font-size: 11px;
+    margin: 1%
+  }
