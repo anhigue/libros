@@ -61,6 +61,7 @@ import { AdsComponent } from './pages/ads/ads.component';
     AccordionModule.forRoot(),
     CarouselModule.forRoot(),
     HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
