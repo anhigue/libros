@@ -8,8 +8,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginRegisterComponent } from './pages/login-register/login-register.component';
 import { AsksComponent } from './pages/asks/asks.component';
 import { AboutComponent } from './pages/about/about.component';
-import { ArticleComponent } from './pages/article/article.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
+import { ArticleComponent } from './pages/article/article.component';
+import { AdsComponent } from './pages/ads/ads.component';
 import { CreateComponent } from './pages/create/create.component';
 
 const routes: Routes = [
@@ -54,6 +55,10 @@ const routes: Routes = [
   {
     path: 'categories',
     component: CategoriesComponent
+  },
+  {
+    path: 'ads',
+    component: AdsComponent
   },
   {
     path: 'create/article',

@@ -35,6 +35,7 @@ import { LoginRegisterComponent } from './pages/login-register/login-register.co
 import { AsksComponent } from './pages/asks/asks.component';
 import { AboutComponent } from './pages/about/about.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AdsComponent } from './pages/ads/ads.component';
 import { FormsModule } from '@angular/forms';
 import { CreateComponent } from './pages/create/create.component';
 
@@ -52,6 +53,7 @@ import { CreateComponent } from './pages/create/create.component';
     LoginRegisterComponent,
     AsksComponent,
     AboutComponent,
+    AdsComponent
     CreateComponent
   ],
   imports: [
