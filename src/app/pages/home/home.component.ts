@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../../services/admin.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  destacados: any;
+
+  constructor(private admin: AdminService) {
+    this.getDestacados();
+  }
 
   ngOnInit() {
   }
 
+  async getDestacados() {
+    await this.admin.getDestacados().toPromise().then( res => {this.destacados = res; console.log(res); });
+  }
 }

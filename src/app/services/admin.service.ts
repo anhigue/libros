@@ -114,4 +114,9 @@ export class AdminService {
   createSubCat(cat) {
     return this.http.post(this.base + 'administracion/create.sub.cat.php', cat, { headers: this.headers });
   }
+
+  // obtener los cuatro articulos destacados
+  getDestacados() {
+    return this.http.get(this.base + 'articulos/get.destacado.php', { headers: this.headers });
+  }
 }
