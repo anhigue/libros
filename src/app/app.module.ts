@@ -57,6 +57,7 @@ import { HttpClientModule } from '@angular/common/http';
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     AccordionModule.forRoot(),
+    PaginationModule.forRoot(),
     HttpClientModule
   ],
   providers: [],

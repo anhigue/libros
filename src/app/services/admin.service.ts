@@ -119,4 +119,15 @@ export class AdminService {
   getDestacados() {
     return this.http.get(this.base + 'articulos/get.destacado.php', { headers: this.headers });
   }
+
+  // obtiene los articulos por offset y limite {"limit": 1, "offset": 0}
+  getArticuloLO(rango) {
+    return this.http.post(this.base + 'articulos/get.limit.offset.php', rango, { headers: this.headers });
+  }
+
+  // obtiene el numero de aritucolos
+  getCountArticulo() {
+    return this.http.get(this.base + 'articulos/get.count.php', { headers: this.headers });
+  }
+
 }

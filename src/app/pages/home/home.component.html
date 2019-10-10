@@ -21,43 +21,24 @@
     </section>
     <hr>
     <br />
-
-
-    <div class="row">
-        <div class="large-12 columns">
-            <article>
-                <div class="row">
-
-                    <div class="large-6 columns">
-                        <h3><a href="#">Conoce la ultima tecnología inmersa en el mundo automovilistico</a></h3>
-                        <p>
-                            <span><i class="fi-torso"> anonimo &nbsp;&nbsp;</i></span>
-                            <span><i class="fi-calendar"> xx/xx/19 &nbsp;&nbsp;</i></span>
-                            <span class="label success">Premium</span>
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
-                    </div>
-                    <div class="large-6 columns">
-                        <p><img src="https://cde.peru.com//ima/0/1/8/9/1/1891304/924x530/ces-2019.jpg" alt="image for article" alt="article preview image"></p>
-                    </div>
-                </div>
-
-
+    <div class="row columns">
+        <h4 class="titles text-center">Te podría interesar</h4>
+        <div class="callout">
+            <article *ngFor="let u of articulosShow">
                 <div class="row">
                     <div class="large-6 columns">
                         <p><img src="https://img.uefa.com/imgml/uefacom/ucl/social/og-default.jpg" alt="image for article" alt="article preview image"></p>
                     </div>
                     <div class="large-6 columns">
-                        <h3><a href="#">Empieza La UEFA Champions league</a></h3>
-                        <p>
-                            <span><i class="fi-torso"> anonimo &nbsp;&nbsp;</i></span>
-                            <span><i class="fi-calendar"> xx/xx/19 &nbsp;&nbsp;</i></span>
-                            <span class="label success2">Gratuito</span>
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae impedit beatae, ipsum delectus aperiam nesciunt magni facilis ullam.</p>
+                        <div *ngFor="let v of u.articulo">
+                            <h3><a href="#">{{v.titulo_articulo}}</a></h3>
+                            <h5><span class="label success2">Creado el: {{ v.fecha_creacion}}</span> <span class="label success2">Publicado el: {{ v.fecha_publicacion}}</span></h5>
+                        </div>
+                        <p>{{u.parrafos[0].parrafo_articulo}}</p>
                     </div>
                 </div>
             </article>
         </div>
+        <pagination [totalItems]="showNmber" (pageChanged)="pageChanged($event);" (click)="changePage();" class="text-center"></pagination>
     </div>
 </div>
