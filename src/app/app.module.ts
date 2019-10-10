@@ -58,6 +58,7 @@ import { HttpClientModule } from '@angular/common/http';
     ModalModule.forRoot(),
     AccordionModule.forRoot(),
     PaginationModule.forRoot(),
+    CarouselModule.forRoot(),
     HttpClientModule
   ],
   providers: [],

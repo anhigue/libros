@@ -130,4 +130,8 @@ export class AdminService {
     return this.http.get(this.base + 'articulos/get.count.php', { headers: this.headers });
   }
 
+  // obtener la informacion de un solo articulo
+  getArticulo(articulo) {
+    return this.http.post(this.base + 'articulos/read.one.php', articulo, { headers: this.headers });
+  }
 }

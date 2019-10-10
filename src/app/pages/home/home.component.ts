@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
   showNmber: number;
   page: number;
 
-  constructor(private admin: AdminService) {
+  constructor(private admin: AdminService, private route: Router) {
     this.getDestacados();
     this.limite = 5;
     this.offset = 0;
@@ -72,6 +73,10 @@ export class HomeComponent implements OnInit {
 
   pageChanged(event: any): void {
     this.page = event.page;
+  }
+
+  goTo(id: any) {
+    this.route.navigateByUrl('article/' + id.id_articulo);
   }
 
 }

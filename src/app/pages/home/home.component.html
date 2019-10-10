@@ -14,7 +14,7 @@
         <div class="row small-up-1 medium-up-2 large-up-4">
             <div class="column show-for-small-up  " *ngFor="let u of destacados">
                 <img src="{{u.imagenes[0].path}}" alt="image for article" />
-                <h2 *ngFor="let v of u.articulo"><a>{{v.titulo_articulo}}</a></h2>
+                <h2 *ngFor="let v of u.articulo"><a (click)="goTo(v);">{{v.titulo_articulo}}</a></h2>
                 <p>Ref Link: <a href="{{u.links[0].link_articulo}}" target="_blank">{{u.links[0].link_articulo}}</a></p>
             </div>
         </div>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="large-6 columns">
                         <div *ngFor="let v of u.articulo">
-                            <h3><a href="#">{{v.titulo_articulo}}</a></h3>
+                            <h3><a (click)="goTo(v);">{{v.titulo_articulo}}</a></h3>
                             <h5><span class="label success2">Creado el: {{ v.fecha_creacion}}</span> <span class="label success2">Publicado el: {{ v.fecha_publicacion}}</span></h5>
                         </div>
                         <p>{{u.parrafos[0].parrafo_articulo}}</p>
