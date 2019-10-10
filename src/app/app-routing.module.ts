@@ -9,6 +9,8 @@ import { LoginRegisterComponent } from './pages/login-register/login-register.co
 import { AsksComponent } from './pages/asks/asks.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ArticleComponent } from './pages/article/article.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
+import { CreateComponent } from './pages/create/create.component';
 
 const routes: Routes = [
   {
@@ -48,6 +50,19 @@ const routes: Routes = [
   {
     path: 'article/:id',
     component: ArticleComponent
+  },
+  {
+    path: 'categories',
+    component: CategoriesComponent
+  },
+  {
+    path: 'create/article',
+    component: CreateComponent
+  },
+  {
+    path: '#',
+    redirectTo: 'home',
+    pathMatch: 'full'
   }
 ];
 

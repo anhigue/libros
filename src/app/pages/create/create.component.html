@@ -1,0 +1,123 @@
+<div class="row columns contenido">
+    <h2 class="titles text-center">Crear un nuevo articulo</h2>
+    <section class="row columns">
+        <label for="select">Selecciona una plantilla</label>
+        <select id="select" [(ngModel)]="plantilla" (change)="ChangedPlantilla(plantilla);">
+          <option value="1">A</option>
+          <option value="2">B</option>
+          <option value="3">C</option>
+        </select>
+    </section>
+</div>
+<div class="row columns card">
+    <h4 class="text-center titles">Contenido del articulo plantilla {{plantilla}}</h4>
+    <div class="card-body">
+        <br>
+        <div *ngIf="plantillaA">
+            <section class="row column">
+                <h1 class="text-center titles"><input type="text" placeholder="INGRESA EL TITULO DEL ARTICULO"></h1>
+            </section>
+            <section class="row column">
+                <carousel [showIndicators]="true">
+                    <slide>
+                        <figure class="orbit-figure">
+                            <input type="text" placeholder="INGRESA EL LINK DE LA PRIMERA IMAGEN">
+                        </figure>
+                    </slide>
+                    <slide>
+                        <figure class="orbit-figure">
+                            <input type="text" placeholder="INGRESA EL LINK DE LA PRIMERA SEGUNDA">
+                        </figure>
+                    </slide>
+                    <slide>
+                        <figure class="orbit-figure">
+                            <input type="text" placeholder="INGRESA EL LINK DE LA PRIMERA TERCERA">
+                        </figure>
+                    </slide>
+                </carousel>
+            </section>
+            <section class="row column">
+                <p class="text-center text-justify">Primer Parrafo</p>
+                <textarea type="text" placeholder=""></textarea>
+                <p class="text-center text-justify">Segundo Parrafo</p>
+                <textarea type="text" placeholder=""></textarea>
+                <p class="text-center text-justify">Tercer Parrafo</p>
+                <textarea type="text" placeholder=""></textarea>
+            </section>
+            <br>
+        </div>
+
+        <div *ngIf="plantillaB">
+            <section class="row column">
+                <h1 class="text-center titles"><input type="text" placeholder="INGRESA EL TITULO DEL ARTICULO"></h1>
+            </section>
+            <section class="row column">
+                <p class="text-justify">Ingresa el primer parrafo</p>
+                <textarea></textarea>
+            </section>
+            <section class="row column">
+                <p>Ingresa la imagen principal</p>
+                <input type="text" placeholder="Ingresa el link de la imagen para poder guardarla">
+            </section>
+            <br>
+            <section class="row column">
+                <p class="text-justify">Ingresa el segundo parrafo</p>
+                <textarea type="text"></textarea>
+            </section>
+            <br>
+            <section class="row column">
+                <div class="row">
+                    <div class="medium-4 columns">
+                        <p>Ingresa la primera imagen</p>
+                        <input type="text" placeholder="Ingresa el link de la imagen para poderla guardar">
+                    </div>
+                    <div class="medium-4 columns">
+                        <p>Ingresa la segunda imagen</p>
+                        <input type="text" placeholder="Ingresa el link de la imagen para poderla guardar">
+                    </div>
+                    <div class="medium-4 columns">
+                        <p>Ingresa la tercera imagen</p>
+                        <input type="text" placeholder="Ingresa el link de la imagen para poderla guardar">
+                    </div>
+                </div>
+            </section>
+            <br>
+            <section class="row column">
+                <p class="text-justify">Ingresa el tercer parrafo</p>
+                <textarea type="text"></textarea>
+            </section>
+            <br>
+        </div>
+
+        <div *ngIf="plantillaC">
+            <section class="row column">
+                <h1 class="text-center titles"><input type="text" placeholder="INGRESA EL TITULO DEL ARTICULO"></h1>
+            </section>
+            <section class="row columns">
+                <div class="row">
+                    <div class="large-6 medium-6 small-6 columns">
+                        <p>Ingresa la tercera imagen</p>
+                        <input type="text" placeholder="Ingresa el link de la imagen para poderla guardar">
+                    </div>
+                    <div class="large-6 medium-6 small-6 columns">
+                        <p class="text-justify">
+                            Ingresa el primer parrafo
+                            <textarea type="text"></textarea>
+                        </p>
+                        <br>
+                        <p class="text-justify">
+                            Ingresa el segundo parrafo
+                            <textarea type="text"></textarea>
+                        </p>
+                        <br>
+                        <p class="text-justify">
+                            Ingresa el tercer parrafo
+                            <textarea type="text"></textarea>
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <br>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { Router } from '@angular/router';
+import { Util } from '../../../util/util';
 
 @Component({
   selector: 'app-home',
@@ -16,11 +17,13 @@ export class HomeComponent implements OnInit {
   listado: any;
   showNmber: number;
   page: number;
+  util: Util;
 
   constructor(private admin: AdminService, private route: Router) {
     this.getDestacados();
     this.limite = 5;
     this.offset = 0;
+    this.util = new Util(this.admin);
   }
 
   ngOnInit() {
@@ -77,6 +80,14 @@ export class HomeComponent implements OnInit {
 
   goTo(id: any) {
     this.route.navigateByUrl('article/' + id.id_articulo);
+  }
+
+  async updateVista(id) {
+    // tslint:disable-next-line:variable-name
+    const id_ = {id_articulo: id.id_articulo};
+    await this.admin.updateVisita(id_).toPromise().then( res => {
+      this.goTo(id);
+    });
   }
 
 }

@@ -36,6 +36,7 @@ import { AsksComponent } from './pages/asks/asks.component';
 import { AboutComponent } from './pages/about/about.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CreateComponent } from './pages/create/create.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     LoginRegisterComponent,
     AsksComponent,
-    AboutComponent
+    AboutComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,

@@ -141,7 +141,7 @@ export class AdminService {
   }
 
   // actualiza la visita del articulo {"id_articulo": 1}
-  updateVisita() {
-    return this.http.post(this.base + 'articulos/visita.update.php', { headers: this.headers });
+  updateVisita(id) {
+    return this.http.post(this.base + 'articulos/visita.update.php', id, { headers: this.headers });
   }
 }
