@@ -1,20 +1,18 @@
 <div class="contenido row columns" *ngIf="plantillaA">
     <section class="row column">
-        <div class="row column">
-            <h1 class="text-center titles">{{articulo.articulo[0].titulo_articulo}}</h1>
-            <hr />
-            <div class="show-for-small-up">
-                <span class="label success" *ngFor="let u of articulo.categorias">{{u.sub_categoria}}</span>
-            </div>
-            <div class="show-for-small-up">
-                <span class="label primary" *ngFor="let u of articulo.articulo">Creado {{u.fecha_creacion}}</span>
-                <span class="label primary" *ngFor="let u of articulo.articulo">Publicado {{u.fecha_publicacion}}</span>
-            </div>
-            <div class="show-for-small-up">
-                <span class="label success">Visitas {{articulo.articulo[0].visita_articulo}}</span>
-            </div>
-            <hr>
+        <h1 class="text-center titles">{{articulo.articulo[0].titulo_articulo}}</h1>
+        <hr />
+        <div class="show-for-small-up">
+            <span class="label success" *ngFor="let u of articulo.categorias">{{u.sub_categoria}}</span>
         </div>
+        <div class="show-for-small-up">
+            <span class="label primary" *ngFor="let u of articulo.articulo">Creado {{u.fecha_creacion}}</span>
+            <span class="label primary" *ngFor="let u of articulo.articulo">Publicado {{u.fecha_publicacion}}</span>
+        </div>
+        <div class="show-for-small-up">
+            <span class="label success">Visitas {{articulo.articulo[0].visita_articulo}}</span>
+        </div>
+        <hr>
     </section>
     <section class="row column">
         <carousel [showIndicators]="true">
@@ -37,158 +35,98 @@
     <br>
 </div>
 
-<div class="contenido" *ngIf="plantillaB">
-    <section id="titulo">
-        <div class="row column">
-            <h1 class="text-center">Se ignagura la temporada 100 en la NFL</h1>
+<div class="contenido row columns" *ngIf="plantillaB">
+    <section class="row column">
+        <h1 class="text-center titles">{{articulo.articulo[0].titulo_articulo}}</h1>
+        <hr />
+        <div class="show-for-small-up">
+            <span class="label success" *ngFor="let u of articulo.categorias">{{u.sub_categoria}}</span>
         </div>
+        <div class="show-for-small-up">
+            <span class="label primary" *ngFor="let u of articulo.articulo">Creado {{u.fecha_creacion}}</span>
+            <span class="label primary" *ngFor="let u of articulo.articulo">Publicado {{u.fecha_publicacion}}</span>
+        </div>
+        <div class="show-for-small-up">
+            <span class="label success">Visitas {{articulo.articulo[0].visita_articulo}}</span>
+        </div>
+        <hr>
     </section>
-    <article id="art1">
-        <div class="row">
-            <div class="large-12 columns">
-
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
-        </div>
-    </article>
-    <section>
-        <div class="row">
-
-            <div class="large-11 columns">
-                <p><img src="https://placehold.it/900x450" alt="main article image"></p>
-            </div>
-
-        </div>
+    <section class="row column">
+        <p class="text-justify">
+            {{articulo.parrafos[0].parrafo_articulo}}
+        </p>
+    </section>
+    <section class="row column">
+        <img src="{{articulo.imagenes[0].path}}" alt="main article image" class="text-center">
     </section>
     <br>
-    <article id="art1">
-        <div class="row">
-            <div class="large-12 columns">
-
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
-        </div>
-    </article>
-    <br>
-
-    <section>
-        <div class="row">
-            <div class="large-12 columns">
-                <div class="row">
-
-                    <div class="medium-4 columns">
-                        <img src="https://placehold.it/600x350" alt="main article image"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    </div>
-                    <div class="medium-4 columns">
-                        <img src="https://placehold.it/600x350" alt="main article image"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    </div>
-                    <div class="medium-4 columns">
-                        <img src="https://placehold.it/600x350" alt="main article image"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.s
-                    </div>
-                </div>
-            </div>
-        </div>
-
+    <section class="row column">
+        <p class="text-justify">
+            {{articulo.parrafos[1].parrafo_articulo}}
+        </p>
     </section>
     <br>
-    <article id="art1">
+    <section class="row column">
         <div class="row">
-            <div class="large-12 columns">
-
-
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
-        </div>
-    </article>
-</div>
-
-<div class="contenido" *ngIf="plantillaC">
-    <section id="titulo">
-        <div class="row column">
-            <h1 class="text-center">Comienza el Munidal de Rugby, Reto: Japon</h1>
-        </div>
-    </section>
-    <hr />
-    <section>
-        <div class="row">
-            <div class="medium-8 columns">
-                <p><img src="https://placehold.it/900x450" alt="main article image"></p>
+            <div class="medium-4 columns">
+                <img src="{{articulo.imagenes[1].path}}" alt="main article image" class="text-center">
             </div>
             <div class="medium-4 columns">
-                <p> ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                    in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                <img src="{{articulo.imagenes[2].path}}" alt="main article image" class="text-center">
+            </div>
+            <div class="medium-4 columns">
+                <img src="{{articulo.imagenes[3].path}}" alt="main article image" class="text-center">
+            </div>
+        </div>
+    </section>
+    <br>
+    <section class="row column">
+        <p class="text-justify">
+            {{articulo.parrafos[2].parrafo_articulo}}
+        </p>
+    </section>
+    <section class="row column">
+        <div class="show-for-small-up">
+            <h4 class="label primary">Referencias</h4>
+            <a class="label success" href="{{item.link_articulo}}" *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
+        </div>
+    </section>
+    <br>
+</div>
+
+<div class="contenido row columns" *ngIf="plantillaC">
+    <section class="row column">
+        <h1 class="text-center titles">{{articulo.articulo[0].titulo_articulo}}</h1>
+        <hr />
+        <div class="show-for-small-up">
+            <span class="label success" *ngFor="let u of articulo.categorias">{{u.sub_categoria}}</span>
+        </div>
+        <div class="show-for-small-up">
+            <span class="label primary" *ngFor="let u of articulo.articulo">Creado {{u.fecha_creacion}}</span>
+            <span class="label primary" *ngFor="let u of articulo.articulo">Publicado {{u.fecha_publicacion}}</span>
+        </div>
+        <div class="show-for-small-up">
+            <span class="label success">Visitas {{articulo.articulo[0].visita_articulo}}</span>
+        </div>
+        <hr>
+    </section>
+    <section class="row columns">
+        <div class="row">
+            <div class="large-6 medium-6 small-6 columns">
+                <img src="{{item.path}}" *ngFor="let item of articulo.imagenes">
+            </div>
+            <div class="large-6 medium-6 small-6 columns">
+                <p class="text-justify" *ngFor="let item of articulo.parrafos">
+                    {{item.parrafo_articulo}} <br>
                 </p>
             </div>
         </div>
     </section>
-    <br>
-    <article id="art1">
-        <div class="row">
-            <div class="large-12 columns">
-
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
+    <section class="row column">
+        <div class="show-for-small-up">
+            <h4 class="label primary">Referencias</h4>
+            <a class="label success" href="{{item.link_articulo}}" *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
         </div>
-    </article>
-    <br>
-
-    <section>
-        <div class="row">
-            <div class="large-12 columns">
-                <div class="row">
-
-                    <div class="medium-4 columns">
-                        <img src="https://placehold.it/600x350" alt="main article image">
-                    </div>
-                    <div class="medium-4 columns">
-                        <img src="https://placehold.it/600x350" alt="main article image">
-                    </div>
-                    <div class="medium-4 columns">
-                        <img src="https://placehold.it/600x350" alt="main article image">
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </section>
     <br>
-    <article id="art1">
-        <div class="row">
-            <div class="large-12 columns">
-
-
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
-        </div>
-    </article>
 </div>
