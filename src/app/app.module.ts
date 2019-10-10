@@ -35,6 +35,7 @@ import { LoginRegisterComponent } from './pages/login-register/login-register.co
 import { AsksComponent } from './pages/asks/asks.component';
 import { AboutComponent } from './pages/about/about.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AdsComponent } from './pages/ads/ads.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     LoginRegisterComponent,
     AsksComponent,
-    AboutComponent
+    AboutComponent,
+    AdsComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +59,7 @@ import { HttpClientModule } from '@angular/common/http';
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     AccordionModule.forRoot(),
+    CarouselModule.forRoot(),
     HttpClientModule
   ],
   providers: [],

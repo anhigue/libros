@@ -8,6 +8,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginRegisterComponent } from './pages/login-register/login-register.component';
 import { AsksComponent } from './pages/asks/asks.component';
 import { AboutComponent } from './pages/about/about.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
+import { ArticleComponent } from './pages/article/article.component';
+import { AdsComponent } from './pages/ads/ads.component';
 
 
 const routes: Routes = [
@@ -43,6 +46,18 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent
+  },
+  {
+    path: 'categories',
+    component: CategoriesComponent
+  },
+  {
+    path: 'article',
+    component: ArticleComponent
+  },
+  {
+    path: 'ads',
+    component: AdsComponent
   }
 ];
 
