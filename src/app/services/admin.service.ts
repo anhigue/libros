@@ -105,4 +105,13 @@ export class AdminService {
     return this.http.post(this.base + 'administracion/delete.cat.php', cat, { headers: this.headers });
   }
 
+  // crear una categoria {"nombre": "Tecnologia"}
+  createCat(cat) {
+    return this.http.post(this.base + 'administracion/create.cat.php', cat, { headers: this.headers });
+  }
+
+  // crear una sub categoria
+  createSubCat(cat) {
+    return this.http.post(this.base + 'administracion/create.sub.cat.php', cat, { headers: this.headers });
+  }
 }
