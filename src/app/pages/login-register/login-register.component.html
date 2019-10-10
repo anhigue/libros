@@ -25,6 +25,11 @@
                     <strong>No hemos podido hacer login </strong> Asegurate de ingresar los datos correctos!
                 </alert>
             </div>
+            <div *ngIf="showAlertB">
+                <alert type="success" (click)="donShow();">
+                    <strong>Registro exitoso </strong> Se te ha enviado un correo para que activez tu cuenta!
+                </alert>
+            </div>
         </div>
     </div>
 </div>
@@ -35,42 +40,42 @@
         <div class="row">
             <div class="columns large-6 medium-6 small-6">
                 <label>Nombre
-                    <input type="text" placeholder="Nombre de usuario">
+                    <input type="text" placeholder="Nombre de usuario" [(ngModel)]="nombre" name="nombre">
                 </label>
             </div>
             <div class="columns large-6 medium-6 small-6">
                 <label>Apellido
-                    <input type="text" placeholder="Apellido usuario">
+                    <input type="text" placeholder="Apellido usuario" [(ngModel)]="apellido" name="apellido">
                 </label>
             </div>
         </div>
         <div class="row">
             <div class="columns large-6 medium-6 small-6">
                 <label>Email
-                    <input type="email" placeholder="somebody@example.com">
+                    <input type="email" placeholder="somebody@example.com" [(ngModel)]="correo" name="correo">
                 </label>
             </div>
             <div class="columns large-6 medium-6 small-6">
                 <label>Password
-                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Password" [(ngModel)]="pass" name="pass">
                 </label>
             </div>
         </div>
         <div class="row columns">
             <label>Genero </label>
-            <select>
+            <select [(ngModel)]="genero" name="genero">
                         <option value="{{u.id_genero}}" *ngFor="let u of generos">{{u.nombre_genero}}</option>
             </select>
         </div>
         <div class="row columns">
             <label>Tipo de usuario
-                    <select>
+                    <select [(ngModel)]="tipo" name="tipo">
                         <option value="{{u.id_tipo_usuario}}" *ngFor="let u of roles">{{u.tipo_usuario}}</option>
                     </select>
                 </label>
         </div>
         <div class="row columns">
-            <input type="submit" class="button expanded" value="Registrarte">
+            <button class="button expanded" value="Registrarte" (click)="reg();">Registrarse</button>
         </div>
     </form>
     <button class="close-button" (click)="modalRef.hide()" aria-label="Close modal" type="button">

@@ -15,6 +15,7 @@ export class LoginRegisterComponent implements OnInit {
   generos: any;
   roles: any;
   showAlert: boolean;
+  showAlertB: boolean;
 
   // variables para hacer el logeo
   correoLog: string;
@@ -29,7 +30,7 @@ export class LoginRegisterComponent implements OnInit {
   genero: number;
 
   // variable del usuario para retornar el id
-  idUsuario: number;
+  idUsuario: any;
 
   // usuario
   usuario: any;
@@ -38,6 +39,7 @@ export class LoginRegisterComponent implements OnInit {
     this.getGeneros();
     this.getTipos();
     this.showAlert = false;
+    this.showAlertB = false;
   }
 
   ngOnInit() {
@@ -90,5 +92,34 @@ export class LoginRegisterComponent implements OnInit {
 
   donShow() {
     this.showAlert = false;
+    this.showAlertB = false;
+  }
+
+  reg() {
+
+    const usuario = {
+      nombre: this.nombre,
+      apellido: this.apellido,
+      genero: this.genero,
+      correo: this.correo,
+      pass: this.pass,
+      tipo: this.tipo
+    };
+
+    if ( usuario.nombre === undefined ||
+      usuario.apellido === undefined ||
+      usuario.genero === undefined ||
+      usuario.pass === undefined ||
+      usuario.correo === undefined ||
+      usuario.tipo === undefined ) {
+        console.log('Error');
+      } else {
+        console.log(usuario);
+        this.admin.createUsuario(usuario).toPromise().then( (res: any) => {
+          this.idUsuario = res;
+          this.showAlertB = true;
+          this.modalRef.hide();
+        });
+    }
   }
 }
