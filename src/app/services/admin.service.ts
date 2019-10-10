@@ -139,4 +139,9 @@ export class AdminService {
   getUserId(correo) {
     return this.http.post(this.base + 'usuarios/readOne.php', correo, { headers: this.headers });
   }
+
+  // actualiza la visita del articulo {"id_articulo": 1}
+  updateVisita() {
+    return this.http.post(this.base + 'articulos/visita.update.php', { headers: this.headers });
+  }
 }

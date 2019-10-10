@@ -5,7 +5,7 @@
         </div>
         <div class="top-bar-right titles">
             <ul class="dropdown menu">
-                <li>
+                <li *ngIf="usuario">
                     <ul class="dropdown menu">
                         <li dropdown #dropdownText="bs-dropdown" triggers="mouseover" class="is-dropdown-submenu-parent">
                             <a dropdownToggle (click)="false">
