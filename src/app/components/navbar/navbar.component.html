@@ -12,10 +12,9 @@
                                 <i class="material-icons">account_box</i>
                             </a>
                             <ul id="dropdown-triggers-manual" *dropdownMenu class="menu is-dropdown-submenu" role="menu" aria-labelledby="button-triggers-manual">
-                                <li role="menuitem"><a href="#">Perfil</a></li>
-                                <li role="menuitem"><a href="#">Moderar</a>
-                                </li>
-                                <li role="menuitem"><a href="#">Cerrar Sesión</a></li>
+                                <li role="menuitem"><a [routerLink]="['/profile']"><i class="material-icons">account_circle</i></a></li>
+                                <li role="menuitem"><a [routerLink]="['/profile']">Moderar</a></li>
+                                <li role="menuitem"><a [routerLink]="['/home']"><i class="material-icons">lock</i></a></li>
                                 <li class="divider dropdown-divider"></li>
                             </ul>
                         </li>

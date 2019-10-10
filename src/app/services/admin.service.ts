@@ -134,4 +134,9 @@ export class AdminService {
   getArticulo(articulo) {
     return this.http.post(this.base + 'articulos/read.one.php', articulo, { headers: this.headers });
   }
+
+  // obtiene un usuario a partir de su correo
+  getUserId(correo) {
+    return this.http.post(this.base + 'usuarios/readOne.php', correo, { headers: this.headers });
+  }
 }

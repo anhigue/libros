@@ -10,7 +10,6 @@ import { AsksComponent } from './pages/asks/asks.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ArticleComponent } from './pages/article/article.component';
 
-
 const routes: Routes = [
   {
     path: 'home',
@@ -22,7 +21,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'profile',
+    path: 'profile/:id',
     component: ProfileComponent
   },
   {
