@@ -110,7 +110,7 @@ export class AdminService {
     return this.http.post(this.base + 'administracion/create.cat.php', cat, { headers: this.headers });
   }
 
-  // crear una sub categoria
+  // crear una sub categoria {"nombre": "Nueva Cat", "id_categoria": 1, "img":"google.com"}
   createSubCat(cat) {
     return this.http.post(this.base + 'administracion/create.sub.cat.php', cat, { headers: this.headers });
   }

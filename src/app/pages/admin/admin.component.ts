@@ -24,6 +24,11 @@ export class AdminComponent implements OnInit {
   tipoCatNew: number;
   imgCatNew: string;
 
+  // para crear una nueva sub categoria
+  nombreSubCatNew: string;
+  idNewSub: number;
+  imgSubCatNew: string;
+
   oneAtATime = true;
 
   constructor(private admin: AdminService, private modalService: BsModalService) {
@@ -67,6 +72,24 @@ export class AdminComponent implements OnInit {
       if (res) {
         console.log(res);
         this.admin.getCategorias().toPromise().then( rest => {this.categ = rest; this.modalRef.hide(); });
+      }
+    });
+  }
+
+  async cSubCategoria() {
+    const subCat = {
+      nombre: this.nombreSubCatNew,
+      id_categoria: this.idNewSub,
+      img: this.imgSubCatNew
+    };
+
+    await this.admin.createSubCat(subCat).toPromise().then( res => {
+      if (res) {
+        this.admin.getCategoriaSub().toPromise().then( (rest: object[]) => {
+          // tslint:disable-next-line:no-shadowed-variable
+          this.subcat = rest.filter( (res: any) => res.nombre_sub_categoria !== null);
+          this.modalRef.hide();
+        });
       }
     });
   }

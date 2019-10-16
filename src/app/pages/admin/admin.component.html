@@ -36,6 +36,7 @@
             </table>
         </accordion-group>
         <accordion-group heading="Sub Categorias">
+            <button class="success button small expanded " (click)="openModal(createSubCategoria,'large',null,null);">Crear una nueva sub categoría</button>
             <table class="hover unstriped">
                 <thead>
                     <tr>
@@ -168,6 +169,35 @@
         <div class="button-group">
             <button (click)="modalRef.hide()" class="button">Cancelar</button>
             <button (click)="cCategoria();" class="success button">Agregar</button>
+        </div>
+    </form>
+    <button class="close-button" (click)="modalRef.hide()" aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</ng-template>
+
+<!-- Crear una nueva sub categoria -->
+<ng-template #createSubCategoria>
+    <h4>Crear una nueva Sub categoria</h4>
+    <hr>
+    <form>
+        <div>
+            <label>Nombre</label>
+            <input type="text" required [(ngModel)]="nombreSubCatNew" name="nombreSubCatNew">
+        </div>
+        <div>
+            <label>Tipo Categoria</label>
+            <select name="idSubCat" [(ngModel)]="idNewSub">
+              <option value="{{u.id_categoria}}" *ngFor="let u of categ">{{u.nombre_categoria}}</option>
+            </select>
+        </div>
+        <div>
+            <label>Imagen</label>
+            <input type="text" placeholder="Ingresa el link de la imagen" name="imgSubCat" [(ngModel)]="imgSubCatNew">
+        </div>
+        <div class="button-group">
+            <button (click)="modalRef.hide()" class="button">Cancelar</button>
+            <button (click)="cSubCategoria()" class="success button">Agregar</button>
         </div>
     </form>
     <button class="close-button" (click)="modalRef.hide()" aria-label="Close modal" type="button">
