@@ -16,6 +16,15 @@ export class AdminComponent implements OnInit {
   categorias: any;
   subcat: any;
   usuarios: any;
+  categ: any;
+  tipoCat: any;
+
+  // para crear una nueva categoria
+  nombreCatNew: string;
+  tipoCatNew: number;
+  imgCatNew: string;
+
+  oneAtATime = true;
 
   constructor(private admin: AdminService, private modalService: BsModalService) {
     this.get();
@@ -24,8 +33,8 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
   }
 
-  openModal(template: TemplateRef<any>, u ?: any, tipo?: number) {
-    this.modalRef = this.modalService.show(template, {class: 'tiny'});
+  openModal(template: TemplateRef<any>, tam: string, u ?: any, tipo?: number) {
+    this.modalRef = this.modalService.show(template, {class: tam});
 
     if (tipo === 4) {
       console.log(u);
@@ -43,6 +52,23 @@ export class AdminComponent implements OnInit {
       this.subcat = res.filter( (res: any) => res.nombre_sub_categoria !== null);
     });
     await this.admin.getUsuarios().toPromise().then( res => this.usuarios = res);
+    await this.admin.getCategorias().toPromise().then( res => this.categ = res);
+    await this.admin.getTipoCategorias().toPromise().then( res => this.tipoCat = res);
+  }
+
+  async cCategoria() {
+    const cat = {
+      nombre: this.nombreCatNew,
+      tipo: this.tipoCatNew,
+      img: this.imgCatNew
+    };
+
+    await this.admin.createCat(cat).toPromise().then( res => {
+      if (res) {
+        console.log(res);
+        this.admin.getCategorias().toPromise().then( rest => {this.categ = rest; this.modalRef.hide(); });
+      }
+    });
   }
 
 }

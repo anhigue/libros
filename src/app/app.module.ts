@@ -53,7 +53,7 @@ import { CreateComponent } from './pages/create/create.component';
     LoginRegisterComponent,
     AsksComponent,
     AboutComponent,
-    AdsComponent
+    AdsComponent,
     CreateComponent
   ],
   imports: [

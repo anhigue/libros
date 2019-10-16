@@ -105,7 +105,7 @@ export class AdminService {
     return this.http.post(this.base + 'administracion/delete.cat.php', cat, { headers: this.headers });
   }
 
-  // crear una categoria {"nombre": "Tecnologia"}
+  // crear una categoria {"nombre": "Nueva Cat", "tipo": 1, "img":"google.com"}
   createCat(cat) {
     return this.http.post(this.base + 'administracion/create.cat.php', cat, { headers: this.headers });
   }
@@ -143,5 +143,15 @@ export class AdminService {
   // actualiza la visita del articulo {"id_articulo": 1}
   updateVisita(id) {
     return this.http.post(this.base + 'articulos/visita.update.php', id, { headers: this.headers });
+  }
+
+  // obtiene solo las categorias
+  getCategorias() {
+    return this.http.get(this.base + 'administracion/read.categorias.php', { headers: this.headers });
+  }
+
+  // obtiene los tipos de categorias a mostrar
+  getTipoCategorias() {
+    return this.http.get(this.base + 'administracion/read.tipo.cat.php', { headers: this.headers });
   }
 }
