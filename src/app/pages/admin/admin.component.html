@@ -133,6 +133,25 @@
                 </tbody>
             </table>
         </accordion-group>
+        <accordion-group heading="Plantilla Categorias">
+            <button class="button small expanded " (click)="openModal(cambioCategoria,'tiny',null,null);">Crear una nueva sub categoría</button>
+            <table class="hover unstriped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Plantilla</th>
+                        <th>Fecha Cambio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let u of changePlantilla">
+                        <td>{{u.id_vista}}</td>
+                        <td>{{u.plantilla}}</td>
+                        <td>{{u.fecha_cambio}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </accordion-group>
     </accordion>
     <br>
 </div>
@@ -157,9 +176,9 @@
             <input type="text" required [(ngModel)]="nombreCatNew" name="nombreCatNew">
         </div>
         <div>
-            <label>Tipo Categoria</label>
+            <label>Tipo Subscripción</label>
             <select name="tipoCatCreate" [(ngModel)]="tipoCatNew">
-              <option value="{{u.id_tipo_categoria}}" *ngFor="let u of tipoCat">{{u.tipo_categoria	}}</option>
+              <option value="{{u.id_tipo_sub}}" *ngFor="let u of tipoCat">{{u.tipo_sub}}</option>
             </select>
         </div>
         <div>
@@ -198,6 +217,28 @@
         <div class="button-group">
             <button (click)="modalRef.hide()" class="button">Cancelar</button>
             <button (click)="cSubCategoria()" class="success button">Agregar</button>
+        </div>
+    </form>
+    <button class="close-button" (click)="modalRef.hide()" aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</ng-template>
+
+<!-- Crear una nueva sub categoria -->
+<ng-template #cambioCategoria>
+    <h4>Cambiar la plantilla</h4>
+    <hr>
+    <form>
+        <div>
+            <label>Plantilla</label>
+            <select name="cambio" [(ngModel)]="cambio">
+              <option value="1">Plantilla A</option>
+              <option value="2">Plantilla B</option>
+            </select>
+        </div>
+        <div class="button-group">
+            <button (click)="modalRef.hide()" class="button">Cancelar</button>
+            <button (click)="cp()" class="success button">Agregar</button>
         </div>
     </form>
     <button class="close-button" (click)="modalRef.hide()" aria-label="Close modal" type="button">

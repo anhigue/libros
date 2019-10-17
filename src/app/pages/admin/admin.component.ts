@@ -18,6 +18,7 @@ export class AdminComponent implements OnInit {
   usuarios: any;
   categ: any;
   tipoCat: any;
+  changePlantilla: any;
 
   // para crear una nueva categoria
   nombreCatNew: string;
@@ -28,6 +29,9 @@ export class AdminComponent implements OnInit {
   nombreSubCatNew: string;
   idNewSub: number;
   imgSubCatNew: string;
+
+  // para cambiar la plantilla
+  cambio: number;
 
   oneAtATime = true;
 
@@ -59,6 +63,7 @@ export class AdminComponent implements OnInit {
     await this.admin.getUsuarios().toPromise().then( res => this.usuarios = res);
     await this.admin.getCategorias().toPromise().then( res => this.categ = res);
     await this.admin.getTipoCategorias().toPromise().then( res => this.tipoCat = res);
+    await this.admin.getChangePlantillas().toPromise().then( res => this.changePlantilla = res);
   }
 
   async cCategoria() {
@@ -90,6 +95,17 @@ export class AdminComponent implements OnInit {
           this.subcat = rest.filter( (res: any) => res.nombre_sub_categoria !== null);
           this.modalRef.hide();
         });
+      }
+    });
+  }
+
+  async cp() {
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    const data = {id_usuario: usuario.id_usuario, plantilla: this.cambio };
+    await this.admin.changePlantilla(data).toPromise().then( (res: any) => {
+      if (res.message) {
+        this.admin.getChangePlantillas().toPromise().then( rest => this.changePlantilla = rest);
+        this.modalRef.hide();
       }
     });
   }
