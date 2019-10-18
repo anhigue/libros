@@ -54,7 +54,7 @@ import { CreateComponent } from './pages/create/create.component';
     AsksComponent,
     AboutComponent,
     AdsComponent,
-    CreateComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,

@@ -1,108 +1,115 @@
-<div class="contenido">
-    <section>
-        <div class="row large-6 profile">
-            <div class="contenido">
-                <div class="profile-usertitle">
-                    <h4>Perfil</h4>
-                    <br />
-                    <div class="profile-userpic">
-                        <label for="exampleFileUpload" class="button boton-foto-perfil">
-                            <img src="https://placehold.it/400x370" alt="foto de perfil" />
-                        </label>
-
-                        <div class="profile-usertitle-name">
-                            {{usuario.nombre}} {{usuario.apellido}}
-                        </div>
-                        <div class="profile-usertitle-type">
-                            Administrador
-                        </div>
-                        <p>Email: <i>{{usuario.correo}}</i></p>
-                        <p>Género: <i>{{usuario.genero}}</i></p>
+<div class="contenido row columns">
+    <section class="row">
+        <div class="columns large-4 medium-4">
+            <div class="profile-usertitle">
+                <h4 class="titles">Mi Perfil</h4>
+                <div class="profile-userpic">
+                    <label for="exampleFileUpload" class="button boton-foto-perfil"><img src="https://placehold.it/400x370" alt="foto de perfil" /></label>
+                    <div class="profile-usertitle-name">
+                        {{usuario.nombre}} {{usuario.apellido}}
                     </div>
                     <div class="profile-usertitle-type">
                         Administrador
                     </div>
-                    <p>Email: <i>Hector@gmail.com</i></p>
-                    <p>Género: <i>Masculino</i></p>
-                    <p>Subscripción: <i></i></p>
-                    <h5>Elige el tipo de subcripcion que quieras</h5>
+                    <p>Email: <i>{{usuario.correo}}</i></p>
+                    <p>Género: <i>{{usuario.genero}}</i></p>
                 </div>
-                <div class="panel">                        
-                        <div class="row small-up-1 medium-up-3 large-up-3">
-                          <div class="column show-for-small-up">
-                            <div class="panel panel-default text-center">
-                              <div class="panel-heading">
-                                <h2>Gratis</h2>
-                              </div>
-                              <div class="panel-body">
-                                <p><strong>20</strong> Lorem</p>
-                                <p><strong>15</strong> Ipsum</p>
-                                <p><strong>5</strong> Dolor</p>
-                                <p><strong>2</strong> Sit</p>
-                                <p><strong>Endless</strong> Amet</p>
-                              </div>
-                              <div class="panel-footer">
-                                <h3>free</h3>
-                                <h4>all times</h4>
-                                <button class="button alert">Seleccionar</button>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="column show-for-small-up">
-                            <div class="panel panel-default text-center">
-                              <div class="panel-heading">
-                                <h2>Premium1</h2>
-                              </div>
-                              <div class="panel-body">
-                                <p><strong>50</strong> Lorem</p>
-                                <p><strong>25</strong> Ipsum</p>
-                                <p><strong>10</strong> Dolor</p>
-                                <p><strong>5</strong> Sit</p>
-                                <p><strong>Endless</strong> Amet</p>
-                              </div>
-                              <div class="panel-footer">
-                                <h3>$29</h3>
-                                <h4>per 6 months</h4>
-                                <button class="button alert">Seleccionar</button>
-                              </div>
-                            </div>
-                          </div>
-                         <div class="column show-for-small-up">
-                            <div class="panel panel-default text-center">
-                              <div class="panel-heading">
-                                <h2>Premium2</h2>
-                              </div>
-                              <div class="panel-body">
-                                <p><strong>100</strong> Lorem</p>
-                                <p><strong>50</strong> Ipsum</p>
-                                <p><strong>25</strong> Dolor</p>
-                                <p><strong>10</strong> Sit</p>
-                                <p><strong>Endless</strong> Amet</p>
-                              </div>
-                              <div class="panel-footer">
-                                <h3>$49</h3>
-                                <h4>per year</h4>
-                                <button class="button alert">Seleccionar</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                <br />
+                <div class="profile-usertitle-type">
+                    Administrador
+                </div>
                 <div class="profile-userbuttons">
-                    <a href="#"><button class="button success">Crear articulo</button></a>
-                    <a href="#"><button class="button success">Editar informacion</button>
-                    </a>
-                    <br />
-                    <div class="profile-userbuttons">
-                        <a [routerLink]="['/create/article']"><button class="button success">Crear articulo</button></a>
-                        <a href="#"><button class="button success">Editar informacion</button>
-                    </a>
-                        <br />
-                        <a href="#"><button class="button alert">Cerrar sesion</button>
-                    </a>
+                    <!-- <a [routerLink]="['/create/article']" class="button success">Crear Articulo</a> -->
+                    <div class="button-group">
+                        <button class="button success">Editar informacion</button>
+                        <button class="button alert">Cerrar sesion</button>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="columns large-8 medium-8">
+            <accordion [closeOthers]="oneAtATime">
+                <accordion-group [isDisabled]="true" heading="Acciones"></accordion-group>
+                <accordion-group heading="Mis articulos">
+                    <p>Mis articulos van aquí</p>
+                </accordion-group>
+                <accordion-group heading="Administración">
+                    <p>Si deseas realizar acciones de administración da
+                        <a [routerLink]="['/admin']" routerLinkActive="router-link-active">click aquí</a>
+                    </p>
+                </accordion-group>
+                <accordion-group heading="Moderar publicaciones">
+                    <p>Some content</p>
+                </accordion-group>
+            </accordion>
+        </div>
+    </section>
+    <section *ngIf="false">
+        <div class="row large-6 profile">
+            <div class="contenido">
+                <div class="panel">
+                    <div class="row small-up-1 medium-up-3 large-up-3">
+                        <div class="column show-for-small-up">
+                            <div class="panel panel-default text-center">
+                                <div class="panel-heading">
+                                    <h2>Gratis</h2>
+                                </div>
+                                <div class="panel-body">
+                                    <p><strong>20</strong> Lorem</p>
+                                    <p><strong>15</strong> Ipsum</p>
+                                    <p><strong>5</strong> Dolor</p>
+                                    <p><strong>2</strong> Sit</p>
+                                    <p><strong>Endless</strong> Amet</p>
+                                </div>
+                                <div class="panel-footer">
+                                    <h3>free</h3>
+                                    <h4>all times</h4>
+                                    <button class="button alert">Seleccionar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column show-for-small-up">
+                            <div class="panel panel-default text-center">
+                                <div class="panel-heading">
+                                    <h2>Premium1</h2>
+                                </div>
+                                <div class="panel-body">
+                                    <p><strong>50</strong> Lorem</p>
+                                    <p><strong>25</strong> Ipsum</p>
+                                    <p><strong>10</strong> Dolor</p>
+                                    <p><strong>5</strong> Sit</p>
+                                    <p><strong>Endless</strong> Amet</p>
+                                </div>
+                                <div class="panel-footer">
+                                    <h3>$29</h3>
+                                    <h4>per 6 months</h4>
+                                    <button class="button alert">Seleccionar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column show-for-small-up">
+                            <div class="panel panel-default text-center">
+                                <div class="panel-heading">
+                                    <h2>Premium2</h2>
+                                </div>
+                                <div class="panel-body">
+                                    <p><strong>100</strong> Lorem</p>
+                                    <p><strong>50</strong> Ipsum</p>
+                                    <p><strong>25</strong> Dolor</p>
+                                    <p><strong>10</strong> Sit</p>
+                                    <p><strong>Endless</strong> Amet</p>
+                                </div>
+                                <div class="panel-footer">
+                                    <h3>$49</h3>
+                                    <h4>per year</h4>
+                                    <button class="button alert">Seleccionar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            </div>
 
         </div>
+    </section>
+</div>
