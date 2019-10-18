@@ -68,13 +68,6 @@
             </select>
         </div>
         <div class="row columns">
-            <label>Tipo de usuario
-                    <select [(ngModel)]="tipo" name="tipo">
-                        <option value="{{u.id_tipo_usuario}}" *ngFor="let u of roles">{{u.tipo_usuario}}</option>
-                    </select>
-                </label>
-        </div>
-        <div class="row columns">
             <button class="button expanded" value="Registrarte" (click)="reg();">Registrarse</button>
         </div>
     </form>

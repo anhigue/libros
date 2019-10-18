@@ -1,102 +1,106 @@
-  
-  
   .boton-foto-perfil {
-    border-radius: 100%;
-    background-color: transparent;
+      border-radius: 100%;
+      background-color: transparent;
   }
   
   .boton-foto-perfil:hover {
-    background-color: transparent;
+      background-color: transparent;
   }
   
-  
   .profile {
-    border-radius: 10px;
+      border-radius: 10px;
   }
   
   .profile-userpic img {
-    width: 200px;
-    height: 180px;
-    border-radius: 50%;
+      width: 200px;
+      height: 180px;
+      border-radius: 50%;
   }
   
   .profile-usertitle {
-    text-align: center;
-    margin-top: 20px;
+      text-align: center;
+      margin-top: 20px;
   }
   
   .profile-usertitle-name {
-    color: black;
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 7px;
+      color: black;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 7px;
   }
   
   .profile-usertitle-type {
-    text-transform: uppercase;
-    color: black;
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 5px;
+      text-transform: uppercase;
+      color: black;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 5px;
   }
   
   .profile-userbuttons {
-    text-align: center;
-    margin: 10%;
-    padding: 10px;
+      text-align: center;
+      margin: 10%;
+      padding: 10px;
   }
   
   .profile-userbuttons .button {
-    text-transform: uppercase;
-    font-size: 11px;
-    margin: 1%
+      text-transform: uppercase;
+      font-size: 11px;
+      margin: 1%
   }
+  
   .panel {
-    border: 0.5px transparent #dd0909;
-    border-radius:0;
-    transition: box-shadow 0.5s;
-    order: 0.5px solid #dd0909;
+      border: 0.5px transparent #dd0909;
+      border-radius: 0;
+      transition: box-shadow 0.5s;
+      order: 0.5px solid #dd0909;
   }
   
   .panel:hover {
-    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+      box-shadow: 5px 0px 40px rgba(0, 0, 0, .2);
   }
   
   .panel-footer .btn:hover {
-    border: 1px solid #dd0909;
-    background-color: #fff !important;
-    color: #dd0909;
+      border: 1px solid #dd0909;
+      background-color: #fff !important;
+      color: #dd0909;
   }
   
   .panel-heading {
-    color: #fff !important;
-    background-color: #dd0909 !important;
-    padding: 25px;
-    border-bottom: 1px solid transparent;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-    
+      color: #fff !important;
+      background-color: #dd0909 !important;
+      padding: 25px;
+      border-bottom: 1px solid transparent;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
   }
   
   .panel-footer {
-    background-color: #fff !important;
-    border: 0.5px solid #dd0909;
+      background-color: #fff !important;
+      border: 0.5px solid #dd0909;
   }
   
   .panel-footer h3 {
-    font-size: 32px;
+      font-size: 32px;
   }
   
   .panel-footer h4 {
-    color: #aaa;
-    font-size: 14px;
+      color: #aaa;
+      font-size: 14px;
   }
   
   .panel-footer .btn {
-    margin: 15px 0;
-    background-color: #dd0909;
-    color: #fff;
+      margin: 15px 0;
+      background-color: #dd0909;
+      color: #fff;
   }
   
+  .padre {
+      padding: 5% 0;
+  }
+  
+  .hijo {
+      padding: 10% 0;
+  }

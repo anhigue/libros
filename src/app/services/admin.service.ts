@@ -45,7 +45,7 @@ export class AdminService {
   }
 
   // crear los parrafos de un articulo { "parrafo":" este es el parrafo", "id_articulo": 1}
-  crateParrafo(parrafo: any) {
+  createParrafo(parrafo: any) {
     return this.http.post(this.base + 'articulos/create.parrafo.php', parrafo, { headers: this.headers });
   }
 
@@ -57,6 +57,11 @@ export class AdminService {
   // crear un link para un articulo { "id_articulo": 3, "link": "www.google.com"}
   createLink(link: any) {
     return this.http.post(this.base + 'articulos/create.link.php', link, { headers: this.headers });
+  }
+
+  // crear una categoria para los articulos
+  createCategoria(link: any) {
+    return this.http.post(this.base + 'articulos/create.categoria.php', link, { headers: this.headers });
   }
 
   // eliminar un articulo { "id_articulo": 3}
@@ -188,5 +193,10 @@ export class AdminService {
   // esta funcion crea una imgen de tipo blob dentro de la base de datos { "img": "img" }
   craeteBlobImg(img) {
     return this.http.post(this.base + 'imagenes/craete.php', img, { headers: this.headers });
+  }
+
+  // obtiene los estados de un articulo
+  getEstadosArticulo() {
+    return this.http.get(this.base + 'articulos/get.estados.php', { headers: this.headers });
   }
 }

@@ -103,7 +103,7 @@ export class LoginRegisterComponent implements OnInit {
       genero: this.genero,
       correo: this.correo,
       pass: this.pass,
-      tipo: this.tipo
+      tipo: 4
     };
 
     if ( usuario.nombre === undefined ||
