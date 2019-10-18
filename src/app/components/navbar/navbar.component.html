@@ -6,9 +6,9 @@
         <div class="top-bar-right titles">
             <ul class="dropdown menu">
                 <li *ngIf="usuario"><a routerLinkActive="router-link-active" (click)="profile();"><i class="material-icons">assignment_ind</i></a></li>
-                <li><a [routerLink]="['/categories']" routerLinkActive="router-link-active">Categorias</a></li>
-                <li><a [routerLink]="['/about']" routerLinkActive="router-link-active">¿Quiénes somos? / Historia</a></li>
-                <li><a [routerLink]="['/login']" routerLinkActive="router-link-active"><i class="material-icons">account_box</i></a></li>
+                <li class="hide-for-small-only"><a [routerLink]="['/categories']" routerLinkActive="router-link-active">Categorias</a></li>
+                <li class="hide-for-small-only"><a [routerLink]="['/about']" routerLinkActive="router-link-active">¿Quiénes somos? / Historia</a></li>
+                <li class="hide-for-small-only"><a [routerLink]="['/login']" routerLinkActive="router-link-active"><i class="material-icons">account_box</i></a></li>
             </ul>
         </div>
     </div>

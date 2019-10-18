@@ -179,4 +179,14 @@ export class AdminService {
   getCategoriasView() {
     return this.http.get(this.base + 'administracion/read.view.php', { headers: this.headers });
   }
+
+  // esta funcion obtiene la imagen en tipo blob
+  getBlobImg() {
+    return this.http.get(this.base + 'imagenes/read.php', { headers: this.headers });
+  }
+
+  // esta funcion crea una imgen de tipo blob dentro de la base de datos { "img": "img" }
+  craeteBlobImg(img) {
+    return this.http.post(this.base + 'imagenes/craete.php', img, { headers: this.headers });
+  }
 }
