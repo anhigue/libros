@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
+import { BsModalRef, BsModalService } from 'ngx-foundation';
 
 @Component({
   selector: 'app-profile',
@@ -11,14 +12,24 @@ export class ProfileComponent implements OnInit {
   oneAtATime = true;
   usuarioInfo: any;
   tipoUsuario: any;
+  tipoSubscripcion: any;
+
+  mySubscripcion: any;
 
   // show permisos
   showModetion = false;
   showAdministracion = false;
   showSubscripcion = false;
 
-  constructor(private admin: AdminService) {
+  modalRef: BsModalRef;
+
+  subscriocionCreate: any;
+
+  constructor(private admin: AdminService, private modalService: BsModalService) {
     this.getUsuario();
+    this.getTipoSub();
+    this.getSub();
+    this.mySubscripcion = JSON.parse(localStorage.getItem('sub'));
   }
 
   ngOnInit() {
@@ -74,4 +85,42 @@ export class ProfileComponent implements OnInit {
     }
     console.log(this.showModetion, 'autor');
   }
+
+  async getTipoSub() {
+    await this.admin.getTiposSubscripcion().toPromise().then( res => this.tipoSubscripcion = res);
+  }
+
+  openModal(template: TemplateRef<any>, sub: any) {
+    this.modalRef = this.modalService.show(template, {class: 'small'});
+    this.subscriocionCreate = sub;
+    console.log(sub);
+  }
+
+  psc() {
+    const sub = {
+      id_tipo_sub: this.subscriocionCreate.id_tipo_sub,
+      id_subscripcion: JSON.parse(localStorage.getItem('sub')).id_subscripcion
+    };
+
+    console.log(sub);
+    this.admin.updateSub(sub).toPromise().then( res => {
+      console.log(res);
+      this.getSub();
+      this.mySubscripcion = JSON.parse(localStorage.getItem('sub'));
+      location.reload();
+      this.modalRef.hide();
+    });
+  }
+
+  async getSub() {
+    const user = {
+      id: JSON.parse(localStorage.getItem('usuario')).id_usuario
+    };
+    await this.admin.getMySubscripcion(user).toPromise().then(res => {
+      if (res) {
+        localStorage.setItem('sub', JSON.stringify(res));
+      }
+    });
+  }
+
 }

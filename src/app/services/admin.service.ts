@@ -199,4 +199,19 @@ export class AdminService {
   getEstadosArticulo() {
     return this.http.get(this.base + 'articulos/get.estados.php', { headers: this.headers });
   }
+
+  // obtiene los tipos de subscripcion
+  getTiposSubscripcion() {
+    return this.http.get(this.base + 'subscripcion/read.tipo.php', { headers: this.headers });
+  }
+
+  // obtener mi subcripcion {"id":1}
+  getMySubscripcion(id) {
+    return this.http.post(this.base + 'subscripcion/get.my.php', id, { headers: this.headers });
+  }
+
+  // actualiza la subscripcion
+  updateSub(sub) {
+    return this.http.post(this.base + 'usuarios/update.sub.php', sub, { headers: this.headers });
+  }
 }

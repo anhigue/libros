@@ -1,14 +1,15 @@
 <div class="Contenido">
     <section>
         <div class="row">
-                <div class="row encabezado">
-                        <h4 class="titulo">Ads</h4>
-                    </div>
+            <div class="row encabezado">
+                <h4 class="titulo titles">Publicidad</h4>
+            </div>
             <table>
                 <thead>
                     <tr>
-                        <th>Id Anuncio</th>
+                        <th>Anuncio</th>
                         <th>Nombre anuncio</th>
+                        <th>Imagen</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -17,6 +18,9 @@
                         <td>1</td>
                         <td>
                             Anuncio 1
+                        </td>
+                        <td>
+                            <img src="https://placehold.it/100x100" alt="Imagen de publicidad">
                         </td>
                         <td>
                             <button class="button success" data-open="publicar-ad">
@@ -31,39 +35,45 @@
                         </td>
                     </tr>
                     <tr>
-                            <td>2</td>
-                            <td>
-                                Anuncio 2
-                            </td>
-                            <td>
-                                <button class="button success" data-open="publicar-ad">
+                        <td>2</td>
+                        <td>
+                            Anuncio 2
+                        </td>
+                        <td>
+                            <img src="https://placehold.it/100x100" alt="Imagen de publicidad">
+                        </td>
+                        <td>
+                            <button class="button success" data-open="publicar-ad">
                                     <i class="fi-pencil">publicar</i>
                                 </button>
-                                <button class="button warning" data-open="edtar-ad">
+                            <button class="button warning" data-open="edtar-ad">
                                     <i class="fi-trash">editar</i>
                                 </button>
-                                <button class="button alert" data-open="del-ad">
+                            <button class="button alert" data-open="del-ad">
                                         <i class="fi-trash">eliminar</i>
                                     </button>
-                            </td>
-                        </tr>
-                        <tr>
-                                <td>3</td>
-                                <td>
-                                    Auncio 3
-                                </td>
-                                <td>
-                                    <button class="button success" data-open="publicar-ad">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            Auncio 3
+                        </td>
+                        <td>
+                            <img src="https://placehold.it/100x100" alt="Imagen de publicidad">
+                        </td>
+                        <td>
+                            <button class="button success" data-open="publicar-ad">
                                         <i class="fi-pencil">publicar</i>
                                     </button>
-                                    <button class="button warning" data-open="edtar-ad">
+                            <button class="button warning" data-open="edtar-ad">
                                         <i class="fi-trash">editar</i>
                                     </button>
-                                    <button class="button alert" data-open="del-ad">
+                            <button class="button alert" data-open="del-ad">
                                             <i class="fi-trash">eliminar</i>
                                         </button>
-                                </td>
-                            </tr>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 
@@ -76,6 +86,14 @@
             </div>
         </div>
     </section>
-
-    
 </div>
+
+<ng-template #crearAnuncio>
+    <h4 class="titles text-center">Crear un Anuncio</h4>
+    <hr>
+    <p>Your couch. It is mine.</p>
+    <p>I'm a paragraph that lives inside of a modal.</p>
+    <button class="close-button" (click)="modalRef.hide()" aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</ng-template>

@@ -11,6 +11,9 @@
                     <p class="label secondary">Email: <i class="label success">{{usuario.correo}}</i></p>
                     <p class="label secondary">Género: <i class="label success">{{usuario.genero}}</i></p>
                 </div>
+                <div class="profile-userpic">
+                    <p class="label secondary">Subscripcion: <i class="label success">{{mySubscripcion.tipo_sub}}</i></p>
+                </div>
                 <div class="profile-userbuttons">
                     <div class="button-group">
                         <button class="button success">Editar informacion</button>
@@ -41,65 +44,22 @@
                     <section>
                         <div class="row columns">
                             <div class="row small-up-1 medium-up-3 large-up-3">
-                                <div class="column show-for-small-up">
+                                <div class="column show-for-small-up" *ngFor="let item of tipoSubscripcion">
                                     <div class="panel panel-default text-center">
                                         <div class="panel-heading">
-                                            <h2>Premium1</h2>
+                                            <h2>{{item.tipo_sub}}</h2>
                                         </div>
                                         <div class="panel-body">
-                                            <p><strong>50</strong> Lorem</p>
-                                            <p><strong>25</strong> Ipsum</p>
-                                            <p><strong>10</strong> Dolor</p>
-                                            <p><strong>5</strong> Sit</p>
-                                            <p><strong>Endless</strong> Amet</p>
+                                            <p>
+                                                La subscripción {{item.tipo_sub}} te puede llamar la atención
+                                            </p>
                                         </div>
-                                        <div class="panel-footer">
-                                            <h3>$29</h3>
-                                            <h4>per 6 months</h4>
-                                            <button class="button alert">Seleccionar</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="column show-for-small-up">
-                                    <div class="panel panel-default text-center">
-                                        <div class="panel-heading">
-                                            <h2>Premium2</h2>
-                                        </div>
-                                        <div class="panel-body">
-                                            <p><strong>100</strong> Lorem</p>
-                                            <p><strong>50</strong> Ipsum</p>
-                                            <p><strong>25</strong> Dolor</p>
-                                            <p><strong>10</strong> Sit</p>
-                                            <p><strong>Endless</strong> Amet</p>
-                                        </div>
-                                        <div class="panel-footer">
-                                            <h3>$49</h3>
-                                            <h4>per year</h4>
-                                            <button class="button alert">Seleccionar</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="column show-for-small-up">
-                                    <div class="panel panel-default text-center">
-                                        <div class="panel-heading">
-                                            <h2>Premium2</h2>
-                                        </div>
-                                        <div class="panel-body">
-                                            <p><strong>100</strong> Lorem</p>
-                                            <p><strong>50</strong> Ipsum</p>
-                                            <p><strong>25</strong> Dolor</p>
-                                            <p><strong>10</strong> Sit</p>
-                                            <p><strong>Endless</strong> Amet</p>
-                                        </div>
-                                        <div class="panel-footer">
-                                            <h3>$49</h3>
-                                            <h4>per year</h4>
-                                            <button class="button alert">Seleccionar</button>
+                                        <div>
+                                            <button class="button alert expanded" (click)="openModal(pagarSub,item);">Comprar</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </section>
                 </accordion-group>
@@ -107,3 +67,39 @@
         </div>
     </section>
 </div>
+
+<ng-template #pagarSub>
+    <section class="row columns">
+        <h4>Pagar Subscripción</h4>
+        <hr>
+        <p>Has escogido la subscripcion <span class="label secondary">{{subscriocionCreate.tipo_sub}}</span></p>
+    </section>
+    <section class="row columns">
+        <div class="row">
+            <div class="large-8 columns">
+                <label class="label">Nombre</label>
+                <input type="text" max="16" placeholder="Juan perez">
+            </div>
+            <div class="large-4 columns">
+                <label class="label">Fecha vencimiento</label>
+                <input type="date">
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-8 columns">
+                <label class="label">Tarjeta</label>
+                <input type="text" max="16" placeholder="1234567890123456">
+            </div>
+            <div class="large-4 columns">
+                <label class="label">PIN</label>
+                <input type="text" max="4" placeholder="1956">
+            </div>
+        </div>
+    </section>
+    <section class="row column">
+        <button class="button expanded success" (click)="psc();">Pagar</button>
+    </section>
+    <button class="close-button" (click)="modalRef.hide();" aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</ng-template>
