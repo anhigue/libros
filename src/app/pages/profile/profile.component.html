@@ -8,17 +8,10 @@
                     <div class="profile-usertitle-name">
                         {{usuario.nombre}} {{usuario.apellido}}
                     </div>
-                    <div class="profile-usertitle-type">
-                        Administrador
-                    </div>
-                    <p>Email: <i>{{usuario.correo}}</i></p>
-                    <p>Género: <i>{{usuario.genero}}</i></p>
-                </div>
-                <div class="profile-usertitle-type">
-                    Administrador
+                    <p class="label secondary">Email: <i class="label success">{{usuario.correo}}</i></p>
+                    <p class="label secondary">Género: <i class="label success">{{usuario.genero}}</i></p>
                 </div>
                 <div class="profile-userbuttons">
-                    <!-- <a [routerLink]="['/create/article']" class="button success">Crear Articulo</a> -->
                     <div class="button-group">
                         <button class="button success">Editar informacion</button>
                         <button class="button alert">Cerrar sesion</button>
@@ -30,7 +23,8 @@
             <accordion [closeOthers]="oneAtATime">
                 <accordion-group [isDisabled]="true" heading="Acciones"></accordion-group>
                 <accordion-group heading="Mis articulos">
-                    <p>Mis articulos van aquí</p>
+                    <p class="titles text-center">Articulos</p>
+                    <a [routerLink]="['/create/article']" class="button success expanded">Crear Articulo</a>
                 </accordion-group>
                 <accordion-group heading="Administración">
                     <p>Si deseas realizar acciones de administración da
