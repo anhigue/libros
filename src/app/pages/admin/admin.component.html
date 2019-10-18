@@ -1,8 +1,16 @@
-<div class="page">
-    <accordion>
-        <accordion-group [isDisabled]="true" heading="Panel de administración">
-        </accordion-group>
+<div class="contenido row columns">
+    <h4 class="text-center titles">Panel de administración</h4>
+    <div class="card">
+        <div class="card-body">
+            <p class="ajust">
+                Este es el panel de administración. Aquí podras administrar todos los componentes dentro de la página de articulos de deportes. Podrás agregar, listar, eliminar las categorias, sub categorias, roles y usuarios dentro de la página
+            </p>
+        </div>
+    </div>
+    <hr>
+    <accordion [closeOthers]="oneAtATime">
         <accordion-group heading="Categorias" [isOpen]="true">
+            <button class="success button small expanded " (click)="openModal(createCategoria,'large',null,null);">Crear una nueva categoría</button>
             <table class="hover unstriped">
                 <thead>
                     <tr>
@@ -12,13 +20,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
+                    <tr *ngFor="let u of categ">
+                        <td>{{u.id_categoria}}</td>
+                        <td>{{u.nombre_categoria}}</td>
                         <td>
                             <div class="button-group">
                                 <div class="button-group">
-                                    <i class="material-icons" (click)="openModal(deleteElement,null,1);">delete</i>
+                                    <i class="material-icons" (click)="openModal(deleteElement,'tiny',u,1);">delete</i>
                                     <i class="material-icons">edit</i>
                                 </div>
                             </div>
@@ -28,11 +36,13 @@
             </table>
         </accordion-group>
         <accordion-group heading="Sub Categorias">
+            <button class="success button small expanded " (click)="openModal(createSubCategoria,'large',null,null);">Crear una nueva sub categoría</button>
             <table class="hover unstriped">
                 <thead>
                     <tr>
                         <th width="200">#</th>
                         <th>Sub categoria</th>
+                        <th>Categoria</th>
                         <th width="150">Acciones</th>
                     </tr>
                 </thead>
@@ -40,9 +50,10 @@
                     <tr *ngFor="let u of subcat">
                         <td>{{u.id_sub_categoria}}</td>
                         <td>{{u.nombre_sub_categoria}}</td>
+                        <td>{{u.nombre_categoria}}</td>
                         <td>
                             <div class="button-group">
-                                <i class="material-icons" (click)="openModal(deleteElement,null,2);">delete</i>
+                                <i class="material-icons" (click)="openModal(deleteElement,'tiny',u,2);">delete</i>
                                 <i class="material-icons">edit</i>
                             </div>
                         </td>
@@ -65,7 +76,7 @@
                         <td>{{u.tipo_usuario}}</td>
                         <td>
                             <div class="button-group">
-                                <i class="material-icons" (click)="openModal(deleteElement,u,3);">delete</i>
+                                <i class="material-icons" (click)="openModal(deleteElement,'tiny',u,3);">delete</i>
                                 <i class="material-icons">edit</i>
                             </div>
                         </td>
@@ -89,7 +100,7 @@
                         <td>
                             <td>
                                 <div class="button-group">
-                                    <i class="material-icons" (click)="openModal(deleteElement,u,4);">delete</i>
+                                    <i class="material-icons" (click)="openModal(deleteElement,'tiny',u,4);">delete</i>
                                     <i class="material-icons">edit</i>
                                 </div>
                             </td>
@@ -101,9 +112,9 @@
             <table class="hover unstriped">
                 <thead>
                     <tr>
-                        <th width="200">#</th>
+                        <th>#</th>
                         <th>Generos</th>
-                        <th width="150">Acciones</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -113,7 +124,7 @@
                         <td>
                             <div class="button-group">
                                 <div class="button-group">
-                                    <i class="material-icons" (click)="openModal(deleteElement,null,1);">delete</i>
+                                    <i class="material-icons" (click)="openModal(deleteElement,'tiny',null,1);">delete</i>
                                     <i class="material-icons">edit</i>
                                 </div>
                             </div>
@@ -122,7 +133,27 @@
                 </tbody>
             </table>
         </accordion-group>
+        <accordion-group heading="Plantilla Categorias">
+            <button class="button small expanded " (click)="openModal(cambioCategoria,'tiny',null,null);">Crear una nueva sub categoría</button>
+            <table class="hover unstriped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Plantilla</th>
+                        <th>Fecha Cambio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let u of changePlantilla">
+                        <td>{{u.id_vista}}</td>
+                        <td>{{u.plantilla}}</td>
+                        <td>{{u.fecha_cambio}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </accordion-group>
     </accordion>
+    <br>
 </div>
 
 <!-- Modales para eliminar datos -->
@@ -130,6 +161,86 @@
     <h4>Eliminar</h4>
     <hr>
     <p>Estas seguro que deseas eliminarlo.</p>
+    <button class="close-button" (click)="modalRef.hide()" aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</ng-template>
+
+<!-- Crear una nueva categoria -->
+<ng-template #createCategoria>
+    <h4>Crear una nueva categoria</h4>
+    <hr>
+    <form>
+        <div>
+            <label>Nombre</label>
+            <input type="text" required [(ngModel)]="nombreCatNew" name="nombreCatNew">
+        </div>
+        <div>
+            <label>Tipo Subscripción</label>
+            <select name="tipoCatCreate" [(ngModel)]="tipoCatNew">
+              <option value="{{u.id_tipo_sub}}" *ngFor="let u of tipoCat">{{u.tipo_sub}}</option>
+            </select>
+        </div>
+        <div>
+            <label>Imagen</label>
+            <input type="text" placeholder="Ingresa el link de la imagen" name="img" [(ngModel)]="imgCatNew">
+        </div>
+        <div class="button-group">
+            <button (click)="modalRef.hide()" class="button">Cancelar</button>
+            <button (click)="cCategoria();" class="success button">Agregar</button>
+        </div>
+    </form>
+    <button class="close-button" (click)="modalRef.hide()" aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</ng-template>
+
+<!-- Crear una nueva sub categoria -->
+<ng-template #createSubCategoria>
+    <h4>Crear una nueva Sub categoria</h4>
+    <hr>
+    <form>
+        <div>
+            <label>Nombre</label>
+            <input type="text" required [(ngModel)]="nombreSubCatNew" name="nombreSubCatNew">
+        </div>
+        <div>
+            <label>Tipo Categoria</label>
+            <select name="idSubCat" [(ngModel)]="idNewSub">
+              <option value="{{u.id_categoria}}" *ngFor="let u of categ">{{u.nombre_categoria}}</option>
+            </select>
+        </div>
+        <div>
+            <label>Imagen</label>
+            <input type="text" placeholder="Ingresa el link de la imagen" name="imgSubCat" [(ngModel)]="imgSubCatNew">
+        </div>
+        <div class="button-group">
+            <button (click)="modalRef.hide()" class="button">Cancelar</button>
+            <button (click)="cSubCategoria()" class="success button">Agregar</button>
+        </div>
+    </form>
+    <button class="close-button" (click)="modalRef.hide()" aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</ng-template>
+
+<!-- Crear una nueva sub categoria -->
+<ng-template #cambioCategoria>
+    <h4>Cambiar la plantilla</h4>
+    <hr>
+    <form>
+        <div>
+            <label>Plantilla</label>
+            <select name="cambio" [(ngModel)]="cambio">
+              <option value="1">Plantilla A</option>
+              <option value="2">Plantilla B</option>
+            </select>
+        </div>
+        <div class="button-group">
+            <button (click)="modalRef.hide()" class="button">Cancelar</button>
+            <button (click)="cp()" class="success button">Agregar</button>
+        </div>
+    </form>
     <button class="close-button" (click)="modalRef.hide()" aria-label="Close modal" type="button">
       <span aria-hidden="true">&times;</span>
     </button>

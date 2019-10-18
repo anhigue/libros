@@ -105,12 +105,12 @@ export class AdminService {
     return this.http.post(this.base + 'administracion/delete.cat.php', cat, { headers: this.headers });
   }
 
-  // crear una categoria {"nombre": "Tecnologia"}
+  // crear una categoria {"nombre": "Nueva Cat", "tipo": 1, "img":"google.com"}
   createCat(cat) {
     return this.http.post(this.base + 'administracion/create.cat.php', cat, { headers: this.headers });
   }
 
-  // crear una sub categoria
+  // crear una sub categoria {"nombre": "Nueva Cat", "id_categoria": 1, "img":"google.com"}
   createSubCat(cat) {
     return this.http.post(this.base + 'administracion/create.sub.cat.php', cat, { headers: this.headers });
   }
@@ -143,5 +143,50 @@ export class AdminService {
   // actualiza la visita del articulo {"id_articulo": 1}
   updateVisita(id) {
     return this.http.post(this.base + 'articulos/visita.update.php', id, { headers: this.headers });
+  }
+
+  // obtiene solo las categorias
+  getCategorias() {
+    return this.http.get(this.base + 'administracion/read.categorias.php', { headers: this.headers });
+  }
+
+  // obtiene los tipos de categorias a mostrar
+  getTipoCategorias() {
+    return this.http.get(this.base + 'administracion/read.tipo.cat.php', { headers: this.headers });
+  }
+
+  // esta vista obtiene la información relevante del usuario dentro de la aplicación
+  getViewUsuario(user) {
+    return this.http.post(this.base + 'usuarios/read.view.php', user, { headers: this.headers });
+  }
+
+  // optiene la ultima plantilla y el id del usuario que hizo el cambio
+  getPlantillaCategoria() {
+    return this.http.get(this.base + 'plantilla/read.plantilla.php', { headers: this.headers });
+  }
+
+  // realiza el cambio de la plantilla {"id_usuario": 2,"plantilla":2 }
+  changePlantilla(plantilla) {
+    return this.http.post(this.base + 'plantilla/change.plantilla.php', plantilla, { headers: this.headers });
+  }
+
+  // obitiene los ultimos 5 cambios que se han hecho en el sistema para las plantillas de categorias
+  getChangePlantillas() {
+    return this.http.get(this.base + 'plantilla/read.php', { headers: this.headers });
+  }
+
+  // obtiene la vista de las categorias a mostrar dentro del sistema
+  getCategoriasView() {
+    return this.http.get(this.base + 'administracion/read.view.php', { headers: this.headers });
+  }
+
+  // esta funcion obtiene la imagen en tipo blob
+  getBlobImg() {
+    return this.http.get(this.base + 'imagenes/read.php', { headers: this.headers });
+  }
+
+  // esta funcion crea una imgen de tipo blob dentro de la base de datos { "img": "img" }
+  craeteBlobImg(img) {
+    return this.http.post(this.base + 'imagenes/craete.php', img, { headers: this.headers });
   }
 }
