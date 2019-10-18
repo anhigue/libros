@@ -53,8 +53,8 @@ import { CreateComponent } from './pages/create/create.component';
     LoginRegisterComponent,
     AsksComponent,
     AboutComponent,
-    AdsComponent
-    CreateComponent
+    AdsComponent,
+    CreateComponent,
   ],
   imports: [
     BrowserModule,
