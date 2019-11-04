@@ -6,18 +6,16 @@
                 <div class="profile-userpic">
                     <label for="exampleFileUpload" class="button boton-foto-perfil"><img src="https://placehold.it/400x370" alt="foto de perfil" /></label>
                     <div class="profile-usertitle-name">
-                        {{usuario.nombre}} {{usuario.apellido}}
+
                     </div>
-                    <p class="label secondary">Email: <i class="label success">{{usuario.correo}}</i></p>
-                    <p class="label secondary">Género: <i class="label success">{{usuario.genero}}</i></p>
-                </div>
-                <div class="profile-userpic">
+                    <p class="label secondary">Email: <i class="label success">{{usuario.usuario.correo}}</i></p>
+                    <p class="label secondary">Rol: <i class="label success">{{usuario.usuario.tipo_usuario}}</i></p>
                     <p class="label secondary">Subscripcion: <i class="label success">{{mySubscripcion.tipo_sub}}</i></p>
                 </div>
                 <div class="profile-userbuttons">
                     <div class="button-group">
                         <button class="button success button-round">Editar informacion</button>
-                        <button class="button alert">Cerrar sesion</button>
+                        <button class="button alert button-round" (click)="out();">Cerrar sesion</button>
                     </div>
                 </div>
             </div>
@@ -30,15 +28,24 @@
                     <p class="titles text-center">Articulos</p>
                     <a [routerLink]="['/create/article']" class="button success expanded">Crear Articulo</a>
                 </accordion-group>
-                <accordion-group heading="Administración">
-                    <p>Si deseas realizar acciones de administración da
-                        <a [routerLink]="['/admin']" routerLinkActive="router-link-active">click aquí</a>
-                    </p>
-                </accordion-group>
-                <accordion-group heading="Moderar publicaciones">
-                    <p>Si deseas realizar moderación de articulos y comentarios
-                        <a [routerLink]="['/moderation']" routerLinkActive="router-link-active">click aquí</a>
-                    </p>
+                <accordion-group heading="Administración" *ngIf="showAdministracion">
+                    <ul>
+                        <li>
+                            <p>Si deseas realizar acciones de administración general
+                                <a [routerLink]="['/admin']" routerLinkActive="router-link-active">click aquí</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>Si deseas realizar acciones de administración de publicidad
+                                <a [routerLink]="['/ads']" routerLinkActive="router-link-active">click aquí</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>Si deseas realizar moderación de articulos y comentarios
+                                <a [routerLink]="['/moderation']" routerLinkActive="router-link-active">click aquí</a>
+                            </p>
+                        </li>
+                    </ul>
                 </accordion-group>
                 <accordion-group heading="Comprar Subscripción">
                     <section>

@@ -7,11 +7,6 @@ import { Observable } from 'rxjs';
 })
 export class ArticulosGuard implements CanActivate {
   canActivate() {
-    const usuario = localStorage.getItem('usuario');
-    if ( usuario ) {
-      return true;
-    } else {
-      return false;
-    }
+    return true;
   }
 }

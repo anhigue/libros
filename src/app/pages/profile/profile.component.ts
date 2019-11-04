@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { BsModalRef, BsModalService } from 'ngx-foundation';
+import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({
   selector: 'app-profile',
@@ -25,65 +26,30 @@ export class ProfileComponent implements OnInit {
 
   subscriocionCreate: any;
 
-  constructor(private admin: AdminService, private modalService: BsModalService) {
-    this.getUsuario();
-    this.getTipoSub();
-    this.getSub();
-    this.mySubscripcion = JSON.parse(localStorage.getItem('sub'));
+  constructor(private admin: AdminService, private modalService: BsModalService, private users: UsuariosService) {
   }
 
-  ngOnInit() {
-
+  async ngOnInit() {
+    await this.getUsuario();
+    await this.getTipoSub();
   }
 
-  getUsuario() {
-    this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    this.getInfoUser();
-  }
-
-  async getInfoUser() {
-    const usuario = {
-      id: this.usuario.id_usuario
-    };
-    await this.admin.getViewUsuario(usuario).toPromise().then( async (res: any) => {
-      this.usuarioInfo = res;
-      await this.admin.getRol().toPromise().then( async (rest: object[]) => {
-        this.tipoUsuario = await rest.filter( (value: any) => this.usuarioInfo.id_tipo === value.id_tipo_usuario)[0];
-        console.log(this.tipoUsuario);
-        this.showAdmin(this.tipoUsuario.tipo_usuario);
-        this.showModeracion(this.tipoUsuario.tipo_usuario);
-        this.showSub(this.tipoUsuario.tipo_usuario);
+  async getUsuario() {
+    this.usuario = await this.users.getInfoUser();
+    if (!this.users.isSetSubUsuario()) {
+      await this.admin.getMySubscripcion({ id: this.usuario.usuario.id_usuario }).toPromise().then(res => {
+        if (res) {
+          this.users.setSubscripcionUsuario(res);
+        }
       });
-      console.log(this.usuarioInfo);
-    });
-  }
-
-  showModeracion(tipoUsuario) {
-    if ( tipoUsuario !== 'moderador') {
-      this.showModetion = false;
     } else {
-      this.showModetion = true;
+      this.mySubscripcion = this.users.getInfoSub();
+      console.log(this.mySubscripcion);
     }
 
-    console.log(this.showModetion, 'moderation');
-  }
-
-  showAdmin(tipoUsuario) {
-    if ( tipoUsuario !== 'administrador') {
-      this.showAdministracion = false;
-    } else {
+    if (this.usuario.usuario.tipo_usuario === 'administrador') {
       this.showAdministracion = true;
     }
-    console.log(this.showModetion, 'administrador');
-  }
-
-  showSub(tipoUsuario) {
-    if ( tipoUsuario !== 'autor') {
-      this.showAdministracion = false;
-    } else {
-      this.showAdministracion = true;
-    }
-    console.log(this.showModetion, 'autor');
   }
 
   async getTipoSub() {
@@ -105,22 +71,13 @@ export class ProfileComponent implements OnInit {
     console.log(sub);
     this.admin.updateSub(sub).toPromise().then( res => {
       console.log(res);
-      this.getSub();
       this.mySubscripcion = JSON.parse(localStorage.getItem('sub'));
       location.reload();
       this.modalRef.hide();
     });
   }
 
-  async getSub() {
-    const user = {
-      id: JSON.parse(localStorage.getItem('usuario')).id_usuario
-    };
-    await this.admin.getMySubscripcion(user).toPromise().then(res => {
-      if (res) {
-        localStorage.setItem('sub', JSON.stringify(res));
-      }
-    });
+  async out() {
+    await this.users.logoutUser();
   }
-
 }

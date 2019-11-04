@@ -12,12 +12,12 @@ import { CategoriesComponent } from './pages/categories/categories.component';
 import { ArticleComponent } from './pages/article/article.component';
 import { AdsComponent } from './pages/ads/ads.component';
 import { CreateComponent } from './pages/create/create.component';
+import { LoginGuard } from './guard/login.guard';
 
 const routes: Routes = [
   {
     path: 'home',
-    component: HomeComponent,
-    pathMatch: 'full'
+    component: HomeComponent
   },
   {
     path: '',
@@ -25,16 +25,19 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'profile/:id',
-    component: ProfileComponent
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'admin',
-    component: AdminComponent
+    component: AdminComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'moderation',
-    component: ModerationComponent
+    component: ModerationComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'login',
@@ -50,7 +53,7 @@ const routes: Routes = [
   },
   {
     path: 'article/:id',
-    component: ArticleComponent
+    component: ArticleComponent,
   },
   {
     path: 'categories',
@@ -58,16 +61,13 @@ const routes: Routes = [
   },
   {
     path: 'ads',
-    component: AdsComponent
+    component: AdsComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'create/article',
-    component: CreateComponent
-  },
-  {
-    path: '#',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    component: CreateComponent,
+    canActivate: [LoginGuard]
   }
 ];
 

@@ -3,6 +3,7 @@ import { BsModalService, BsModalRef } from 'ngx-foundation';
 import $ from 'jquery';
 import { AdminService } from '../../services/admin.service';
 import { Router } from '@angular/router';
+import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({
   selector: 'app-login-register',
@@ -35,7 +36,8 @@ export class LoginRegisterComponent implements OnInit {
   // usuario
   usuario: any;
 
-  constructor(private modalService: BsModalService, private admin: AdminService, private route: Router) {
+  constructor(private modalService: BsModalService, private admin: AdminService, private route: Router,
+              private users: UsuariosService) {
     this.getGeneros();
     this.getTipos();
     this.showAlert = false;
@@ -75,14 +77,19 @@ export class LoginRegisterComponent implements OnInit {
           this.showAlert = true;
         } else {
           this.showAlert = false;
+          console.log(res);
           const correo = {
             correo: this.correoLog
           };
           await this.admin.getUserId(correo).toPromise().then(
-            rest => {
+            async (rest) => {
               this.usuario = rest;
-              localStorage.setItem('usuario', JSON.stringify(this.usuario));
-              this.route.navigateByUrl('profile/' + this.usuario.id_usuario);
+              await this.admin.getViewUsuario({id: this.usuario.id_usuario}).toPromise().then( response => {
+                if (response) {
+                  this.users.setInfoUser(res.log, response);
+                  this.route.navigateByUrl('profile');
+                }
+              });
             }
           );
         }
@@ -95,8 +102,7 @@ export class LoginRegisterComponent implements OnInit {
     this.showAlertB = false;
   }
 
-  reg() {
-
+  async reg() {
     const usuario = {
       nombre: this.nombre,
       apellido: this.apellido,
@@ -112,10 +118,8 @@ export class LoginRegisterComponent implements OnInit {
       usuario.pass === undefined ||
       usuario.correo === undefined ||
       usuario.tipo === undefined ) {
-        console.log('Error');
       } else {
-        console.log(usuario);
-        this.admin.createUsuario(usuario).toPromise().then( (res: any) => {
+       await this.admin.createUsuario(usuario).toPromise().then( (res: any) => {
           this.idUsuario = res;
           this.showAlertB = true;
           this.modalRef.hide();

@@ -1,5 +1,13 @@
 <div class="Contenido">
     <section>
+        <div class="row columns">
+            <div class="callout small secondary" *ngIf="showCalloutMessage" (click)="dismissAlert();">
+                <h5>{{titleAlert}}</h5>
+                <p>{{messageAlert}}</p>
+            </div>
+        </div>
+    </section>
+    <section>
         <div class="row">
             <div class="row encabezado">
                 <h4 class="titulo titles">Publicidad</h4>
@@ -7,71 +15,24 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Anuncio</th>
-                        <th>Nombre anuncio</th>
+                        <th>Link</th>
                         <th>Imagen</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
+                    <tr *ngFor="let item of adsObject">
+                        <td>{{item.nombre_publicidad}}</td>
                         <td>
-                            Anuncio 1
+                            <img src="{{item.imagen_publicidad}}" alt="Imagen de publicidad" style="height: 100px; width: 100px;">
                         </td>
                         <td>
-                            <img src="https://placehold.it/100x100" alt="Imagen de publicidad">
-                        </td>
-                        <td>
-                            <button class="button success" data-open="publicar-ad">
-                                <i class="fi-pencil">publicar</i>
-                            </button>
-                            <button class="button warning" data-open="edtar-ad">
+                            <button class="button warning" data-open="edtar-ad" (click)="openModal(updateAnuncio,item.nombre_publicidad,item.imagen_publicidad,item.id_publicidad);">
                                 <i class="fi-trash">editar</i>
                             </button>
-                            <button class="button alert" data-open="del-ad">
+                            <button class="button alert" data-open="del-ad" (click)="deleteAds(item)">
                                     <i class="fi-trash">eliminar</i>
-                                </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>
-                            Anuncio 2
-                        </td>
-                        <td>
-                            <img src="https://placehold.it/100x100" alt="Imagen de publicidad">
-                        </td>
-                        <td>
-                            <button class="button success" data-open="publicar-ad">
-                                    <i class="fi-pencil">publicar</i>
-                                </button>
-                            <button class="button warning" data-open="edtar-ad">
-                                    <i class="fi-trash">editar</i>
-                                </button>
-                            <button class="button alert" data-open="del-ad">
-                                        <i class="fi-trash">eliminar</i>
-                                    </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>
-                            Auncio 3
-                        </td>
-                        <td>
-                            <img src="https://placehold.it/100x100" alt="Imagen de publicidad">
-                        </td>
-                        <td>
-                            <button class="button success" data-open="publicar-ad">
-                                        <i class="fi-pencil">publicar</i>
-                                    </button>
-                            <button class="button warning" data-open="edtar-ad">
-                                        <i class="fi-trash">editar</i>
-                                    </button>
-                            <button class="button alert" data-open="del-ad">
-                                            <i class="fi-trash">eliminar</i>
-                                        </button>
+                            </button>
                         </td>
                     </tr>
                 </tbody>
@@ -80,7 +41,7 @@
         </div>
         <div class="row">
             <div class="large-7 columns">
-                <button class="button success" data-open="crear-cat">
+                <button class="button success" data-open="crear-cat" (click)="openModal(crearAnuncio, null, null);">
                     <i class="fi-plus"> Agregar Anuncio</i>
                 </button>
             </div>
@@ -89,10 +50,48 @@
 </div>
 
 <ng-template #crearAnuncio>
-    <h4 class="titles text-center">Crear un Anuncio</h4>
+    <h4 class="titles text-center">Agregar un nuevo Anuncio</h4>
     <hr>
-    <p>Your couch. It is mine.</p>
-    <p>I'm a paragraph that lives inside of a modal.</p>
+    <section class="row columns">
+        <form>
+            <div>
+                <label>Link del Anuncio</label>
+                <input type="text" required placeholder="ingresa el link del anuncion" name="newTitleAd" [(ngModel)]="newTitleAd">
+            </div>
+            <div>
+                <label>Imagen</label>
+                <input type="text" required placeholder="ingresa la dirección web de la imagen" [(ngModel)]="newImgAd" name="newImgAd">
+            </div>
+            <div>
+                <button class="button success small button-round" (click)="createAd();">Agregar anuncio</button>
+            </div>
+        </form>
+    </section>
+
+    <button class="close-button" (click)="modalRef.hide()" aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</ng-template>
+
+<ng-template #updateAnuncio>
+    <h4 class="titles text-center">Editar Anuncio {{updateIdAd}}</h4>
+    <hr>
+    <section class="row columns">
+        <form>
+            <div>
+                <label>Link del Anuncio</label>
+                <input type="text" required placeholder="ingresa el link del anuncion" name="newTitleAd" [(ngModel)]="updateTitleAd">
+            </div>
+            <div>
+                <label>Imagen</label>
+                <input type="text" required placeholder="ingresa la dirección web de la imagen" [(ngModel)]="updateImgAd" name="newImgAd">
+            </div>
+            <div>
+                <button class="button success small button-round" (click)="updateAds();">Editar anuncio</button>
+            </div>
+        </form>
+    </section>
+
     <button class="close-button" (click)="modalRef.hide()" aria-label="Close modal" type="button">
       <span aria-hidden="true">&times;</span>
     </button>

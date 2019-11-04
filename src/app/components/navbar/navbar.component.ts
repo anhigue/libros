@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,19 +11,17 @@ export class NavbarComponent implements OnInit {
 
   usuario: any;
 
-  constructor(private route: Router) {
-    this.getUsuario();
-  }
+  constructor(private route: Router, private users: UsuariosService) {}
 
   ngOnInit() {
   }
 
-  getUsuario() {
-    this.usuario = JSON.parse(localStorage.getItem('usuario'));
-  }
-
-  profile() {
-    this.route.navigateByUrl('profile/' + this.usuario.id_usuario);
+  goToNexPage() {
+    if (this.users.isSetUsuario()) {
+      this.route.navigateByUrl('profile');
+    } else {
+      this.route.navigateByUrl('login');
+    }
   }
 
 }
