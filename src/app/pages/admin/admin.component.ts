@@ -2,6 +2,8 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { BsModalRef, BsModalService } from 'ngx-foundation';
 import { element } from 'protractor';
+import { UsuariosService } from '../../services/usuarios.service';
+import { MessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-admin',
@@ -33,10 +35,24 @@ export class AdminComponent implements OnInit {
   // para cambiar la plantilla
   cambio: number;
 
+  // para cambiar el rol del usuario
+  cambioUsuario: any;
+  cambioRol: any;
+  cambioCategoria: any;
+  cambioSubCategoria: any;
+
   oneAtATime = true;
 
-  constructor(private admin: AdminService, private modalService: BsModalService) {
+  messageModal: TemplateRef<any>;
+
+  // show alert
+  showAlertAction: boolean;
+  titleAlert: string;
+  messageAlert: string;
+
+  constructor(private admin: AdminService, private modalService: BsModalService, private users: UsuariosService) {
     this.get();
+    this.showAlertAction = false;
   }
 
   ngOnInit() {
@@ -110,4 +126,80 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  async cambioTipoUsuario() {
+    const dataSend = {
+      id_usuario: this.cambioUsuario.fk_id_usuario,
+      tipo_usuario: this.cambioRol
+    };
+
+    await this.admin.updateRolUsuario(dataSend).toPromise().then( response => {
+      if (response) {
+        console.log(response);
+        this.modalRef.hide();
+        this.get();
+      }
+    });
+  }
+
+  getUsuarioCambio(usuario: any) {
+    this.cambioUsuario = usuario;
+  }
+
+  getCategoriaCambio(categoria: any) {
+    this.cambioCategoria = categoria;
+  }
+
+  getSubcategoriaCambio(subcategoria: any) {
+    this.cambioSubCategoria = subcategoria;
+  }
+
+  eliminarUsuario() {
+    const usuario = { id_usuario: this.cambioUsuario.fk_id_usuario };
+
+    this.users.disableUser(usuario).toPromise().then( (response: any) => {
+      if (response) {
+        console.log(response);
+        this.titleAlert = 'Deshabilitado';
+        this.messageAlert = response.message;
+        this.dismissAlert();
+        this.modalRef.hide();
+      }
+    }).catch(console.error);
+  }
+
+  dismissAlert() {
+    if (this.showAlertAction) {
+      this.showAlertAction = false;
+    } else {
+      this.showAlertAction = true;
+    }
+  }
+
+  async eliminarCategoria() {
+    const data = { id_categoria: this.cambioCategoria.id_categoria};
+
+    await this.admin.deleteCat(data).toPromise().then( (response: any) => {
+      if (response) {
+        this.titleAlert = 'Eliminar Categoria';
+        this.messageAlert = response.message;
+        this.dismissAlert();
+        this.modalRef.hide();
+        this.get();
+      }
+    }).catch(console.error);
+  }
+
+  async eliminarSubcategoria() {
+    const data = { id_sub_categoria: this.cambioSubCategoria.id_sub_categoria};
+
+    await this.admin.deleteSubCat(data).toPromise().then( (response: any) => {
+      if (response) {
+        this.titleAlert = 'Eliminar Sub Categoria';
+        this.messageAlert = response.message;
+        this.dismissAlert();
+        this.modalRef.hide();
+        this.get();
+      }
+    }).catch(console.error);
+  }
 }

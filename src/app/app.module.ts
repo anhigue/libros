@@ -38,6 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdsComponent } from './pages/ads/ads.component';
 import { FormsModule } from '@angular/forms';
 import { CreateComponent } from './pages/create/create.component';
+import { ModalMessageComponent } from './components/modal-message/modal-message.component';
+import { MessageService } from './services/message.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { CreateComponent } from './pages/create/create.component';
     AsksComponent,
     AboutComponent,
     AdsComponent,
-    CreateComponent
+    CreateComponent,
+    ModalMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +82,12 @@ import { CreateComponent } from './pages/create/create.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    MessageService
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ModalMessageComponent
+  ]
 })
 export class AppModule { }

@@ -6,6 +6,11 @@
                 Este es el panel de administración. Aquí podras administrar todos los componentes dentro de la página de articulos de deportes. Podrás agregar, listar, eliminar las categorias, sub categorias, roles y usuarios dentro de la página
             </p>
         </div>
+        <br>
+        <div class="callout small secondary" (click)="dismissAlert();" *ngIf="showAlertAction">
+            <h5>{{titleAlert}}</h5>
+            <p>{{messageAlert}}</p>
+        </div>
     </div>
     <hr>
     <accordion [closeOthers]="oneAtATime">
@@ -26,7 +31,7 @@
                         <td>
                             <div class="button-group">
                                 <div class="button-group">
-                                    <i class="material-icons" (click)="openModal(deleteElement,'tiny',u,1);">delete</i>
+                                    <i class="material-icons" (click)="openModal(deleteCategoria,'small',null,null);getCategoriaCambio(u);">delete</i>
                                     <i class="material-icons">edit</i>
                                 </div>
                             </div>
@@ -53,7 +58,7 @@
                         <td>{{u.nombre_categoria}}</td>
                         <td>
                             <div class="button-group">
-                                <i class="material-icons" (click)="openModal(deleteElement,'tiny',u,2);">delete</i>
+                                <i class="material-icons" (click)="openModal(deleteSubcategoria,'small',null,null); getSubcategoriaCambio(u);">delete</i>
                                 <i class="material-icons">edit</i>
                             </div>
                         </td>
@@ -98,12 +103,11 @@
                         <td>{{u.fk_id_usuario}}</td>
                         <td>{{u.nombre_usuario}} {{u.apellido_usuario}}</td>
                         <td>
-                            <td>
-                                <div class="button-group">
-                                    <i class="material-icons" (click)="openModal(deleteElement,'tiny',u,4);">delete</i>
-                                    <i class="material-icons">edit</i>
-                                </div>
-                            </td>
+                            <div class="button-group">
+                                <i class="material-icons" (click)="openModal(disableUsuario,'tiny',null,null);getUsuarioCambio(u);">delete</i>
+                                <i class="material-icons" (click)="openModal(cambioUsuarioTipo,'small',null,null);getUsuarioCambio(u);">edit</i>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -244,4 +248,57 @@
     <button class="close-button" (click)="modalRef.hide()" aria-label="Close modal" type="button">
       <span aria-hidden="true">&times;</span>
     </button>
+</ng-template>
+
+<!-- Editar a un usuario -->
+<!-- Crear una nueva sub categoria -->
+<ng-template #cambioUsuarioTipo>
+    <h4>Cambio, Tipo Usuario</h4>
+    <hr>
+    <form>
+        <div>
+            <label>Tipo Usuario</label>
+            <select name="cambioRol" [(ngModel)]="cambioRol">
+              <option value="0">Selecciona un nuevo rol</option>
+              <option value="{{u.id_tipo_usuario}}" *ngFor="let u of roles">{{u.id_tipo_usuario}} {{u.tipo_usuario}}</option>
+          </select>
+        </div>
+        <div class="button-group">
+            <button (click)="modalRef.hide()" class="button">Cancelar</button>
+            <button (click)="cambioTipoUsuario();" class="success button">Cambiar</button>
+        </div>
+    </form>
+    <button class="close-button" (click)="modalRef.hide()" aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</ng-template>
+
+<!-- Modal para poder deshabilitar un usuario -->
+<ng-template #disableUsuario>
+    <h4>Deshabilitar Usuario</h4>
+    <hr>
+    <p>Estas seguro que deseas deshabilitarlo.</p>
+    <button class="button alert" (click)="eliminarUsuario();" type="button"><i class="material-icons">
+      delete
+      </i></button>
+</ng-template>
+
+<!-- Modal para eliminar una categoria -->
+<ng-template #deleteCategoria>
+    <h4>Eliminar Categoria</h4>
+    <hr>
+    <p>Estas seguro que deseas eliminarla.</p>
+    <button class="button alert" (click)="eliminarCategoria();" type="button"><i class="material-icons">
+    delete
+    </i></button>
+</ng-template>
+
+<!-- Modal para eliminar una subcategoria -->
+<ng-template #deleteSubcategoria>
+    <h4>Eliminar Sub Categoria</h4>
+    <hr>
+    <p>Estas seguro que deseas eliminarla.</p>
+    <button class="button alert" (click)="eliminarSubcategoria();" type="button"><i class="material-icons">
+    delete
+    </i></button>
 </ng-template>

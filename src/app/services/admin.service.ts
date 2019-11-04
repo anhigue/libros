@@ -100,14 +100,14 @@ export class AdminService {
     return this.http.post(this.base + 'usuarios/login.php', user, { headers: this.headers });
   }
 
-  // eliminar una sub categoria
+  // eliminar una sub categoria {id_sub_categoria}
   deleteSubCat(subcat) {
-    return this.http.post(this.base + 'administracion/delete.sub.cat.php', subcat, { headers: this.headers });
+    return this.http.post(this.base + 'categorias/delete.sub.php', subcat, { headers: this.headers });
   }
 
-  // eliminar una categoria {"id_categoria": 4}
+  // eliminar una categoria {id_categoria: 4}
   deleteCat(cat) {
-    return this.http.post(this.base + 'administracion/delete.cat.php', cat, { headers: this.headers });
+    return this.http.post(this.base + 'categorias/delete.php', cat, { headers: this.headers });
   }
 
   // crear una categoria {"nombre": "Nueva Cat", "tipo": 1, "img":"google.com"}
@@ -214,4 +214,11 @@ export class AdminService {
   updateSub(sub) {
     return this.http.post(this.base + 'usuarios/update.sub.php', sub, { headers: this.headers });
   }
+
+  // actualiza el tipo de usuario { id_usuario, tipo_usuario }
+  updateRolUsuario(usuario) {
+    return this.http.post(this.base + 'usuarios/update.rol.php', usuario, { headers: this.headers });
+  }
+
+
 }
