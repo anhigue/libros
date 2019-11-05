@@ -26,22 +26,6 @@
     <section class="row column">
         <p *ngFor="let item of articulo.parrafos" class="text-center text-justify">{{item.parrafo_articulo}}</p>
     </section>
-    <section class="ads">
-            <div class="row">
-                <div class="medium-6 columns">
-                    <img src="https://static.adweek.com/adweek.com-prod/wp-content/uploads/2019/01/pepsi-atlanta-super-bowl-hed-page-2019.jpg"
-                        height="450" width="550">
-                    <br>
-                    <br>
-                </div>
-                <div class="medium-6 columns">
-                    <img src="https://static.adweek.com/adweek.com-prod/wp-content/uploads/2019/01/pepsi-atlanta-super-bowl-hed-page-2019.jpg"
-                        height="450" width="550">
-                    <br>
-                    <br>
-                </div>
-            </div>
-        </section>
     <section class="row column">
         <div class="show-for-small-up">
             <h4 class="label primary">Referencias</h4>
@@ -83,22 +67,6 @@
         </p>
     </section>
     <br>
-    <section class="ads">
-        <div class="row">
-            <div class="medium-6 columns">
-                <img src="https://static.adweek.com/adweek.com-prod/wp-content/uploads/2019/01/pepsi-atlanta-super-bowl-hed-page-2019.jpg"
-                    height="450" width="550">
-                <br>
-                <br>
-            </div>
-            <div class="medium-6 columns">
-                <img src="https://static.adweek.com/adweek.com-prod/wp-content/uploads/2019/01/pepsi-atlanta-super-bowl-hed-page-2019.jpg"
-                    height="450" width="550">
-                <br>
-                <br>
-            </div>
-        </div>
-    </section>
     <section class="row column">
         <div class="row">
             <div class="medium-6 columns">
@@ -145,24 +113,7 @@
         <div class="row">
             <div class="large-6 medium-6 small-6 columns">
                 <img src="{{item.path}}" *ngFor="let item of articulo.imagenes">
-                <br>
-                <br>
-                <section class="ads">
-                        <div class="row">
-            
-                                <img src="https://static.adweek.com/adweek.com-prod/wp-content/uploads/2019/01/pepsi-atlanta-super-bowl-hed-page-2019.jpg"
-                                    height="450" width="550">
-                                <br>
-                                <br>
-                                <img src="https://static.adweek.com/adweek.com-prod/wp-content/uploads/2019/01/pepsi-atlanta-super-bowl-hed-page-2019.jpg"
-                                    height="450" width="550">
-                                <br>
-                                <br>
-                            
-                        </div>
-                    </section>
             </div>
-            
             <div class="large-6 medium-6 small-6 columns">
                 <p class="text-justify" *ngFor="let item of articulo.parrafos">
                     {{item.parrafo_articulo}} <br>
@@ -178,4 +129,16 @@
         </div>
     </section>
     <br>
+</div>
+<div class="contenido row columns">
+    <section class="ads">
+        <div class="row">
+            <div class="medium-6 columns" *ngFor="let item of adsObject">
+                <a href="{{item.nombre_publicidad}}" (click)="updateVisitas(item);">
+                    <img src="{{item.imagen_publicidad}}" height="450" width="550">
+                </a>
+                <br>
+            </div>
+        </div>
+    </section>
 </div>

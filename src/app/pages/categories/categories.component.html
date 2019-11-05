@@ -1,7 +1,7 @@
 <div class="contenido row columns" id="categoria1">
     <section id="titulo">
         <div class="row column">
-            <h1 class="text-center titles">Categorias</h1>
+            <h4 class="text-center titles">Categorias</h4>
         </div>
     </section>
     <section>
@@ -23,7 +23,7 @@
     <section *ngIf="plantillaA">
         <div class="row small-up-1 medium-up-2 large-up-3">
             <div class="column" *ngFor="let item of categorias | filterBy: userFilter | filterBy: userFilter2 | filterBy: userFilter3">
-                <div class="callout">
+                <div class="callout" (click)="serchBySubCat(item);">
                     <p><img src="{{item.imagen_b}}" alt="Imagen subcategoria"></p>
                     <p class="lead">{{item.nombre_sub}}</p>
                     <p class="subheader">
@@ -36,7 +36,7 @@
     </section>
     <section *ngIf="plantillaB">
         <div class="row small-up-1 medium-up-2 large-up-2">
-            <div class="column" *ngFor="let item of categorias | filterBy: userFilter | filterBy: userFilter2 | filterBy: userFilter3">
+            <div class="column" *ngFor="let item of categorias | filterBy: userFilter | filterBy: userFilter2 | filterBy: userFilter3" (click)="serchBySubCat(item);">
                 <div class="media-object">
                     <div class="media-object-section">
                         <img class="thumbnail" src="{{item.imagen_b}}">
@@ -51,5 +51,31 @@
                 </div>
             </div>
         </div>
+    </section>
+    <section>
+        <hr>
+        <section>
+            <div class="row column">
+                <h4 class="text-center titles">resultado busqueda</h4>
+            </div>
+            <div>
+                <div class="callout">
+                    <article *ngFor="let u of articulosSearch">
+                        <div class="row">
+                            <div class="large-6 columns">
+                                <p><img src="{{u.imagenes[0].path}}" alt="image for article" alt="article preview image"></p>
+                            </div>
+                            <div class="large-6 columns">
+                                <div *ngFor="let v of u.articulo">
+                                    <h3><a (click)="updateVista(v);">{{v.titulo_articulo}}</a></h3>
+                                    <h5><span class="label success2">Creado el: {{ v.fecha_creacion}}</span> <span class="label success2">Publicado el: {{ v.fecha_publicacion}}</span></h5>
+                                </div>
+                                <p>{{u.parrafos[0].parrafo_articulo}}</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
     </section>
 </div>

@@ -220,5 +220,8 @@ export class AdminService {
     return this.http.post(this.base + 'usuarios/update.rol.php', usuario, { headers: this.headers });
   }
 
-
+  // buscar por query dinamico dentro para las sub categorias { "id_sub_categoria": 6 }
+  getByDinamicQuery(subcategoria) {
+    return this.http.post(this.base + 'administracion/read.dinamic.query.php', subcategoria, { headers: this.headers });
+  }
 }

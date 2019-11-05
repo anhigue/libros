@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { FilterPipe } from 'ngx-filter-pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -16,11 +17,14 @@ export class CategoriesComponent implements OnInit {
 
   categorias;
 
+  // para realizar el filtrado
   userFilter: any = { nombre_cat: '' };
   userFilter2: any = { nombre_sub: '' };
   userFilter3: any = { tipo_sub: '' };
 
-  constructor(private admin: AdminService, private filterPipe: FilterPipe) {
+  // para obtener los articulos de la busqueda
+  articulosSearch: any;
+  constructor(private admin: AdminService, private filterPipe: FilterPipe, private route: Router) {
     this.getPlantilla();
     this.getCategoria();
   }
@@ -47,5 +51,23 @@ export class CategoriesComponent implements OnInit {
     await this.admin.getCategoriasView().toPromise().then( (res: object[]) => {
       this.categorias = res;
     });
+  }
+
+  async serchBySubCat(categoria) {
+    await this.admin.getByDinamicQuery({id_sub_categoria: categoria.id_sub}).toPromise()
+    .then( response => {this.articulosSearch = response; console.log(this.articulosSearch);})
+    .catch( error => console.log(error));
+  }
+
+  async updateVista(id) {
+    // tslint:disable-next-line:variable-name
+    const id_ = {id_articulo: id.id_articulo};
+    await this.admin.updateVisita(id_).toPromise().then( res => {
+      this.goTo(id);
+    });
+  }
+
+  goTo(id: any) {
+    this.route.navigateByUrl('article/' + id.id_articulo);
   }
 }

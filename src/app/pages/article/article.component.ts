@@ -17,7 +17,12 @@ export class ArticleComponent implements OnInit {
   plantillaB;
   plantillaC;
 
-  constructor(private admin: AdminService, private param: ActivatedRoute) {}
+  // publicidad de la pagina
+  adsObject: object[] = [];
+
+  constructor(private admin: AdminService, private param: ActivatedRoute, private ads: AdsService) {
+    this.getAllAds();
+  }
 
   ngOnInit() {
     this.id_articulo = this.param.snapshot.paramMap.get('id');
@@ -59,7 +64,29 @@ export class ArticleComponent implements OnInit {
     if ( this.tipo * 1 === 3 ) {
       return true;
     }
-
     return false;
+  }
+
+  async getAllAds() {
+    await this.ads.getAll().toPromise().then( (response: object[]) => {
+      if (response) {
+        for (let i = 0; i < 2; i++) {
+          this.adsObject.push(response[Math.floor(Math.random() * response.length)]);
+        }
+        console.log(this.adsObject);
+      }
+    }).catch( error => console.log(error));
+  }
+
+  async updateVisitas(item) {
+    const data = {
+      id_ad: item.id_publicidad
+    };
+
+    await this.ads.updateVisita(data).toPromise().then( response => {
+      if (response) {
+        console.log(response);
+      }
+    }).catch( error => console.log(error));
   }
 }
