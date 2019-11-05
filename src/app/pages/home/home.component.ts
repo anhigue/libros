@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { Router } from '@angular/router';
 import { Util } from '../../../util/util';
+import { AdsService } from '../../services/ads.service';
 
 @Component({
   selector: 'app-home',
@@ -19,11 +20,15 @@ export class HomeComponent implements OnInit {
   page: number;
   util: Util;
 
-  constructor(private admin: AdminService, private route: Router) {
+  // publicidad de la pagina
+  adsObject: object[] = [];
+
+  constructor(private admin: AdminService, private route: Router, private ads: AdsService) {
     this.getDestacados();
     this.limite = 5;
     this.offset = 0;
     this.util = new Util(this.admin);
+    this. getAllAds();
   }
 
   ngOnInit() {
@@ -37,11 +42,11 @@ export class HomeComponent implements OnInit {
   }
 
   async getDestacados() {
-    await this.admin.getDestacados().toPromise().then( res => {this.destacados = res; console.log(res); });
+    await this.admin.getDestacados().toPromise().then( res => {this.destacados = res; });
   }
 
   async getArticulos(rango) {
-    await this.admin.getArticuloLO(rango).toPromise().then( res => {this.articulosShow = res; console.log(res); });
+    await this.admin.getArticuloLO(rango).toPromise().then( res => {this.articulosShow = res; });
   }
 
   async getCount() {
@@ -90,4 +95,26 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  async getAllAds() {
+    await this.ads.getAll().toPromise().then( (response: object[]) => {
+      if (response) {
+        for (let i = 0; i < 2; i++) {
+          this.adsObject.push(response[Math.floor(Math.random() * response.length)]);
+        }
+        console.log(this.adsObject);
+      }
+    }).catch( error => console.log(error));
+  }
+
+  async updateVisitas(item) {
+    const data = {
+      id_ad: item.id_publicidad
+    };
+
+    await this.ads.updateVisita(data).toPromise().then( response => {
+      if (response) {
+        console.log(response);
+      }
+    }).catch( error => console.log(error));
+  }
 }

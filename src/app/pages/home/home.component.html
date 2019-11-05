@@ -24,21 +24,15 @@
     <hr>
     <br />
     <section class="ads">
-            <div class="row">
-                <div class="medium-6 columns">
-                    <img src="https://static.adweek.com/adweek.com-prod/wp-content/uploads/2019/01/pepsi-atlanta-super-bowl-hed-page-2019.jpg"
-                        height="450" width="550">
-                    <br>
-                    <br>
-                </div>
-                <div class="medium-6 columns">
-                    <img src="https://static.adweek.com/adweek.com-prod/wp-content/uploads/2019/01/pepsi-atlanta-super-bowl-hed-page-2019.jpg"
-                        height="450" width="550">
-                    <br>
-                    <br>
-                </div>
+        <div class="row">
+            <div class="medium-6 columns" *ngFor="let item of adsObject">
+                <a href="{{item.nombre_publicidad}}" (click)="updateVisitas(item);">
+                    <img src="{{item.imagen_publicidad}}" height="450" width="550">
+                </a>
+                <br>
             </div>
-        </section>
+        </div>
+    </section>
     <section class="row columns">
         <h4 class="titles text-center">Te podría interesar</h4>
         <div class="callout">

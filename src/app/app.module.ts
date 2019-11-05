@@ -40,6 +40,7 @@ import { FormsModule } from '@angular/forms';
 import { CreateComponent } from './pages/create/create.component';
 import { ModalMessageComponent } from './components/modal-message/modal-message.component';
 import { MessageService } from './services/message.service';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { MessageService } from './services/message.service';
     CollapseModule.forRoot(),
     OffcanvasModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FilterPipeModule
   ],
   providers: [
     MessageService

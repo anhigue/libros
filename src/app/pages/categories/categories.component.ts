@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
+import { FilterPipe } from 'ngx-filter-pipe';
 
 @Component({
   selector: 'app-categories',
@@ -15,7 +16,11 @@ export class CategoriesComponent implements OnInit {
 
   categorias;
 
-  constructor(private admin: AdminService) {
+  userFilter: any = { nombre_cat: '' };
+  userFilter2: any = { nombre_sub: '' };
+  userFilter3: any = { tipo_sub: '' };
+
+  constructor(private admin: AdminService, private filterPipe: FilterPipe) {
     this.getPlantilla();
     this.getCategoria();
   }
