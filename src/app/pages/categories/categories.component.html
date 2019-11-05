@@ -78,4 +78,14 @@
             </div>
         </section>
     </section>
+    <section class="ads">
+        <div class="row">
+            <div class="medium-6 columns" *ngFor="let item of adsObject">
+                <a href="{{item.nombre_publicidad}}" (click)="updateVisitas(item);">
+                    <img src="{{item.imagen_publicidad}}" height="450" width="550">
+                </a>
+                <br>
+            </div>
+        </div>
+    </section>
 </div>

@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   util: Util;
 
   // publicidad de la pagina
-  adsObject: object[] = [];
+  adsObject = [];
 
   constructor(private admin: AdminService, private route: Router, private ads: AdsService) {
     this.getDestacados();

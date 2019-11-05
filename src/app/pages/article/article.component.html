@@ -34,6 +34,18 @@
         </div>
     </section>
     <br>
+    <div class="contenido row columns">
+        <section class="ads">
+            <div class="row">
+                <div class="medium-6 columns" *ngFor="let item of adsObject">
+                    <a href="{{item.nombre_publicidad}}" (click)="updateVisitas(item);">
+                        <img src="{{item.imagen_publicidad}}" height="450" width="550">
+                    </a>
+                    <br>
+                </div>
+            </div>
+        </section>
+    </div>
 </div>
 
 <div class="contenido row columns" *ngIf="plantillaB">
@@ -91,6 +103,18 @@
         </div>
     </section>
     <br>
+    <div class="contenido row columns">
+        <section class="ads">
+            <div class="row">
+                <div class="medium-6 columns" *ngFor="let item of adsObject">
+                    <a href="{{item.nombre_publicidad}}" (click)="updateVisitas(item);">
+                        <img src="{{item.imagen_publicidad}}" height="450" width="550">
+                    </a>
+                    <br>
+                </div>
+            </div>
+        </section>
+    </div>
 </div>
 
 <div class="contenido row columns" *ngIf="plantillaC">
@@ -129,16 +153,16 @@
         </div>
     </section>
     <br>
-</div>
-<div class="contenido row columns">
-    <section class="ads">
-        <div class="row">
-            <div class="medium-6 columns" *ngFor="let item of adsObject">
-                <a href="{{item.nombre_publicidad}}" (click)="updateVisitas(item);">
-                    <img src="{{item.imagen_publicidad}}" height="450" width="550">
-                </a>
-                <br>
+    <div class="contenido row columns">
+        <section class="ads">
+            <div class="row">
+                <div class="medium-6 columns" *ngFor="let item of adsObject">
+                    <a href="{{item.nombre_publicidad}}" (click)="updateVisitas(item);">
+                        <img src="{{item.imagen_publicidad}}" height="450" width="550">
+                    </a>
+                    <br>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 </div>

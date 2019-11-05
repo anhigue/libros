@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AdsService } from '../../services/ads.service';
 
 @Component({
   selector: 'app-article',
@@ -18,7 +19,7 @@ export class ArticleComponent implements OnInit {
   plantillaC;
 
   // publicidad de la pagina
-  adsObject: object[] = [];
+  adsObject = [];
 
   constructor(private admin: AdminService, private param: ActivatedRoute, private ads: AdsService) {
     this.getAllAds();
