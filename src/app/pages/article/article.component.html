@@ -29,8 +29,10 @@
     <section class="row column">
         <div class="show-for-small-up">
             <h4 class="label primary">Referencias</h4>
-            <a class="label success" href="{{item.link_articulo}}" *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
-            <a class="label success" href="{{item.link_articulo}}" target="_blank" *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
+            <a class="label success" href="{{item.link_articulo}}"
+                *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
+            <a class="label success" href="{{item.link_articulo}}" target="_blank"
+                *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
         </div>
     </section>
     <br>
@@ -98,8 +100,10 @@
     <section class="row column">
         <div class="show-for-small-up">
             <h4 class="label primary">Referencias</h4>
-            <a class="label success" href="{{item.link_articulo}}" *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
-            <a class="label success" href="{{item.link_articulo}}" target="_blank" *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
+            <a class="label success" href="{{item.link_articulo}}"
+                *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
+            <a class="label success" href="{{item.link_articulo}}" target="_blank"
+                *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
         </div>
     </section>
     <br>
@@ -148,8 +152,10 @@
     <section class="row column">
         <div class="show-for-small-up">
             <h4 class="label primary">Referencias</h4>
-            <a class="label success" href="{{item.link_articulo}}" *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
-            <a class="label success" href="{{item.link_articulo}}" target="_blank" *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
+            <a class="label success" href="{{item.link_articulo}}"
+                *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
+            <a class="label success" href="{{item.link_articulo}}" target="_blank"
+                *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
         </div>
     </section>
     <br>
@@ -165,4 +171,70 @@
             </div>
         </section>
     </div>
+</div>
+<div class="contenido row columns">
+    <section class="row column">
+        <h3>Comments</h3>
+        <ng-container>
+            <ul class="simple-nested">
+                <li>
+                    <div class="comment">
+                        <p><a href="">Usuario1</a></p>
+                        <em>Nov 11 2019</em>
+                        <p>Integer elementum turpis sed ante convallis, sit amet maximus orci faucibus. Praesent posuere
+                            tortor sit amet dolor semper sollicitudin.</p>
+                        <p><a href="">  Responder</a><a href="">  Reportar</a></p>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="comment">
+                                <p><a href="">Usuario1</a></p>
+                                <em>Nov 11 2019</em>
+                                <p>Integer elementum turpis sed ante convallis, sit amet maximus orci faucibus. Praesent
+                                    posuere tortor sit amet dolor semper sollicitudin.</p>
+                                <p><a href="">Responder  </a><a href="">  Reportar</a></p>
+                            </div>
+                            <ul>
+                                <li>
+                                    <div class="comment">
+                                        <p><a href="">Usuario1</a></p>
+                                        <em>Nov 11 2019</em>
+                                        <p>Integer elementum turpis sed ante convallis, sit amet maximus orci faucibus.
+                                            Praesent
+                                            posuere tortor sit amet dolor semper sollicitudin.</p>
+                                        <p><a href="">Responder </a> <a href="">  Reportar</a></p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="comment">
+                        <p><a href="">Usuario1</a></p>
+                        <em>Nov 11 2019</em>
+                        <p>Integer elementum turpis sed ante convallis, sit amet maximus orci faucibus. Praesent posuere
+                            tortor sit amet dolor semper sollicitudin.</p>
+                        <p><a href="">Responder  </a>  <a href="">  Reportar</a></p>
+                    </div>
+                </li>
+            </ul>
+        </ng-container>
+        <form class="comment-section-form">
+                <div class="comment-section-box">
+                  <div class="row">
+                    <div class="small-12 column">
+                      <h4>Deja tu comentario</h4>
+                      <label>User
+                        <input type="text">
+                      </label>
+                      <label>Comment
+                        <textarea rows="10" type="text"></textarea>
+                      </label>
+                      <button class="button expanded">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+    </section>
 </div>
