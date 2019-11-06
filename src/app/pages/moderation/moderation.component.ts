@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ModeracionService } from '../../services/moderacion.service';
 import { BsModalRef, BsModalService } from 'ngx-foundation';
 import { AdminService } from '../../services/admin.service';
+import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({
   selector: 'app-moderation',
@@ -19,11 +20,17 @@ export class ModerationComponent implements OnInit {
   titleAlert: string;
   messageAlert: string;
 
+  usuario: any;
+
   constructor(private mod: ModeracionService, private modalService: BsModalService,
-              private admin: AdminService) { }
+              private admin: AdminService, private user: UsuariosService) { }
 
   ngOnInit() {
     this.getModeracion();
+    if (this.user.isSetUsuario()) {
+      this.usuario = this.user.getInfoUser();
+      console.log(this.usuario);
+    }
   }
 
   async getModeracion() {
@@ -58,11 +65,14 @@ export class ModerationComponent implements OnInit {
     await this.mod.publishidArticulo({
       id_articulo: item.id_articulo
     }).toPromise()
-    .then( (response: any) => {
+    .then( async (response: any) => {
       this.titleAlert = 'Publicación de articulo';
       this.messageAlert = response.message;
       this.getModeracion();
       this.dismissAlert();
+      await this.mod.logUsuario({id_usuario: this.usuario.usuario.id_usuario}).toPromise()
+      .then( respon => console.log(respon))
+      .catch( error => console.log(error));
     })
     .catch( error => console.log(error));
   }

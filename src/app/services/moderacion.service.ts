@@ -22,4 +22,9 @@ export class ModeracionService {
   publishidArticulo(articulo) {
     return this.http.post(this.base + 'moderacion/publicar.php', articulo, { headers: this.headers });
   }
+
+  // esta funcion registra la actividad del usuario al moderar en una fecha
+  logUsuario(usuario) {
+    return this.http.post(this.base + 'moderacion/log.php', usuario, { headers: this.headers });
+  }
 }
