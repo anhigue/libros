@@ -92,4 +92,5 @@ export class ArticleComponent implements OnInit {
       }
     }).catch( error => console.log(error));
   }
+  
 }

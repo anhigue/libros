@@ -11,5 +11,5 @@ export class AsksComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  oneAtATime = true;
 }
