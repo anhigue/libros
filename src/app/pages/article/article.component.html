@@ -176,7 +176,7 @@
                         <div class="row column">
                             <em>{{item.fecha_publicacion | date: 'd/m/y'}}</em>
                             <p>{{item.cuerpo_comentario}}</p>
-                            <p><a (click)="dismissRespuesta(item);">Responder </a>|<a (click)="reportar(item);">Reportar</a>| <a>Mostrar respuestas</a></p>
+                            <p><a (click)="dismissRespuesta(item);" *ngIf="showRespuesta">Responder </a>|<a (click)="reportar(item);">Reportar</a>| <a>Mostrar respuestas</a></p>
                         </div>
                     </div>
                     <!-- <ul>
