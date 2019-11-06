@@ -3,6 +3,8 @@ import { AdminService } from '../../services/admin.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdsService } from '../../services/ads.service';
 import { ArticulosService } from '../../services/articulos.service';
+import { UsuariosService } from '../../services/usuarios.service';
+import { ComentariosService } from '../../services/comentarios.service';
 
 @Component({
   selector: 'app-article',
@@ -22,9 +24,26 @@ export class ArticleComponent implements OnInit {
   // publicidad de la pagina
   adsObject = [];
 
+  // para los comentarios
+  newComment: string;
+  newCommentHijo: string;
+  showBoxComment: boolean;
+  showAlert = false;
+  titleAlert: string;
+  messageAlert: string;
+
+  comentario: any;
+  comentarioHijo: any;
+  comentPadre: any;
+
+  usuario: any;
+
+  showRespuesta = false;
+
   constructor(private admin: AdminService, private param: ActivatedRoute, private ads: AdsService,
-              private art: ArticulosService) {
+              private art: ArticulosService, private user: UsuariosService, private com: ComentariosService) {
     this.getAllAds();
+    this.showBoxComment = this.user.isSetUsuario();
   }
 
   ngOnInit() {
@@ -33,7 +52,11 @@ export class ArticleComponent implements OnInit {
       id_articulo: this.id_articulo,
       fk_id_articulo: this.id_articulo
     });
+    if (this.user.isSetUsuario()) {
+      this.usuario = this.user.getInfoUser();
+    }
 
+    this.getComent();
   }
 
   async getArticulo(art) {
@@ -92,5 +115,80 @@ export class ArticleComponent implements OnInit {
       }
     }).catch( error => console.log(error));
   }
-  
+
+  dismissAlert() {
+    if (this.showAlert) {
+      this.showAlert = false;
+    } else {
+      this.showAlert = true;
+    }
+  }
+
+  dismissRespuesta(item) {
+    if (this.showRespuesta) {
+      this.showRespuesta = false;
+    } else {
+      this.showRespuesta = true;
+    }
+    this.comentPadre = item;
+  }
+
+  createComentario() {
+    const coment = {
+      comentario: this.newComment,
+      id_articulo: this.id_articulo,
+      id_usuario: this.usuario.usuario.id_usuario
+    };
+
+    this.com.createComentario(coment).toPromise()
+    .then( (res: any) => {
+      if (res) {
+        this.titleAlert = 'Nuevo Comentario';
+        this.messageAlert = res.message;
+        this.dismissAlert();
+      }
+    })
+    .catch( error => console.log(error));
+  }
+
+  createComentarioHijo() {
+    const coment = {
+      comentario: this.newCommentHijo,
+      id_articulo: this.id_articulo,
+      id_usuario: this.usuario.usuario.id_usuario,
+      id_padre: this.comentPadre.id_comentario
+    };
+
+    this.com.createComentarioHijo(coment).toPromise()
+    .then( (res: any) => {
+      if (res) {
+        this.titleAlert = 'Nuevo Comentario';
+        this.messageAlert = res.message;
+        this.dismissAlert();
+        this.dismissRespuesta(null);
+      }
+    })
+    .catch( error => console.log(error));
+  }
+
+  async getComent() {
+    await this.com.getComentarios({id_articulo: this.id_articulo}).toPromise()
+    .then( res => this.comentario = res)
+    .catch( error => console.log(error));
+  }
+
+  async reportar(item) {
+    const coment = {
+      id_comentario: item.id_comentario
+    };
+    this.com.report(coment).toPromise()
+    .then( (res: any) => {
+      if (res) {
+        this.titleAlert = 'Reportar Comentario';
+        this.messageAlert = res.message;
+        this.dismissAlert();
+      }
+    })
+    .catch( error => console.log(error));
+  }
 }

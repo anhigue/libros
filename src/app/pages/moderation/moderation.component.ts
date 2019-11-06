@@ -15,10 +15,13 @@ export class ModerationComponent implements OnInit {
   modalRef: BsModalRef;
   articuloToPublished: any;
   articuloShow: any = [];
+  comentarioShow: any;
 
   showAlert = false;
   titleAlert: string;
   messageAlert: string;
+
+  comentarios;
 
   usuario: any;
 
@@ -31,6 +34,7 @@ export class ModerationComponent implements OnInit {
       this.usuario = this.user.getInfoUser();
       console.log(this.usuario);
     }
+    this.getComent();
   }
 
   async getModeracion() {
@@ -40,6 +44,13 @@ export class ModerationComponent implements OnInit {
         this.moderacionArticulo = response;
       }
     })
+    .catch( error => console.log(error));
+  }
+
+  async getComent() {
+    await this.mod.getComentariosModeracion()
+    .toPromise()
+    .then( response => this.comentarios = response)
     .catch( error => console.log(error));
   }
 
@@ -69,6 +80,22 @@ export class ModerationComponent implements OnInit {
       this.titleAlert = 'Publicación de articulo';
       this.messageAlert = response.message;
       this.getModeracion();
+      this.dismissAlert();
+      await this.mod.logUsuario({id_usuario: this.usuario.usuario.id_usuario}).toPromise()
+      .then( respon => console.log(respon))
+      .catch( error => console.log(error));
+    })
+    .catch( error => console.log(error));
+  }
+
+  async publishedComentario(item) {
+    await this.mod.publishidComentario({
+      id_moderado: item.id_moderado
+    }).toPromise()
+    .then( async (response: any) => {
+      this.titleAlert = 'Publicación de comentario';
+      this.messageAlert = response.message;
+      this.getComent();
       this.dismissAlert();
       await this.mod.logUsuario({id_usuario: this.usuario.usuario.id_usuario}).toPromise()
       .then( respon => console.log(respon))

@@ -6,7 +6,7 @@
         </div>
         <div class="row">
             <div class="row encabezado">
-                <h4 class="titulo">Moderar articulo</h4>
+                <h4 class="titles text-center">Moderar articulo</h4>
             </div>
             <table>
                 <thead>
@@ -39,53 +39,26 @@
     <section>
         <div class="row">
             <div class="row encabezado">
-                <h4 class="titulo">Moderar Comentario</h4>
+                <h4 class="titles text-center">Moderar Comentario</h4>
             </div>
             <table>
                 <thead>
                     <tr>
                         <th>Veces reportado</th>
-                        <th>Id Comentario</th>
-                        <th>Descripcion</th>
-                        <th>Usuario</th>
-                        <th>Estado</th>
+                        <th>Comentario</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>30</td>
-                        <td>1</td>
+                    <tr *ngFor="let item of comentarios">
+                        <td>{{item.reporte_comentario}}</td>
+                        <td>{{item.cuerpo_comentario}}</td>
                         <td>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in sodales augue. Nam aliquam nec metus eu pharetra. Ut in nunc commodo, interdum nibh eu, faucibus tellus.
-                        </td>
-                        <td>
-                            Reginald Juarez
-                        </td>
-                        <td>
-                            censurado
-                        </td>
-                        <td>
-                            <button class="button success" data-open="edtar-ad">
-                                        <i class="fi-trash">habilitar</i>
-                                    </button>
-                            <button class="button warning" data-open="edtar-ad">
-                                <i class="fi-trash">bloquear</i>
-                            </button>
-                            <button class="button alert" data-open="del-ad">
-                                <i class="fi-trash">eliminar</i>
-                            </button>
+                            <button class="button success" data-open="edtar-ad" (click)="publishedComentario(item);"><i class="fi-trash">habilitar</i></button>
                         </td>
                     </tr>
                 </tbody>
             </table>
-        </div>
-        <div class="row">
-            <div class="large-7 columns">
-                <button class="button success" data-open="crear-cat">
-                    <i class="fi-plus"> guardar cambios</i>
-                </button>
-            </div>
         </div>
     </section>
 </div>

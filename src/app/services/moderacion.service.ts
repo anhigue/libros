@@ -27,4 +27,13 @@ export class ModeracionService {
   logUsuario(usuario) {
     return this.http.post(this.base + 'moderacion/log.php', usuario, { headers: this.headers });
   }
+
+  // esta funcion obtiene los comentarios para ser moderados
+  getComentariosModeracion() {
+    return this.http.get(this.base + 'moderacion/read.coment.php', { headers: this.headers });
+  }
+
+  publishidComentario(moderador) {
+    return this.http.post(this.base + 'moderacion/publicar.coment.php', moderador, { headers: this.headers });
+  }
 }

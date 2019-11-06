@@ -29,10 +29,8 @@
     <section class="row column">
         <div class="show-for-small-up">
             <h4 class="label primary">Referencias</h4>
-            <a class="label success" href="{{item.link_articulo}}"
-                *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
-            <a class="label success" href="{{item.link_articulo}}" target="_blank"
-                *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
+            <a class="label success" href="{{item.link_articulo}}" *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
+            <a class="label success" href="{{item.link_articulo}}" target="_blank" *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
         </div>
     </section>
     <br>
@@ -100,10 +98,8 @@
     <section class="row column">
         <div class="show-for-small-up">
             <h4 class="label primary">Referencias</h4>
-            <a class="label success" href="{{item.link_articulo}}"
-                *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
-            <a class="label success" href="{{item.link_articulo}}" target="_blank"
-                *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
+            <a class="label success" href="{{item.link_articulo}}" *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
+            <a class="label success" href="{{item.link_articulo}}" target="_blank" *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
         </div>
     </section>
     <br>
@@ -152,10 +148,8 @@
     <section class="row column">
         <div class="show-for-small-up">
             <h4 class="label primary">Referencias</h4>
-            <a class="label success" href="{{item.link_articulo}}"
-                *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
-            <a class="label success" href="{{item.link_articulo}}" target="_blank"
-                *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
+            <a class="label success" href="{{item.link_articulo}}" *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
+            <a class="label success" href="{{item.link_articulo}}" target="_blank" *ngFor="let item of articulo.links">{{item.link_articulo}}</a>
         </div>
     </section>
     <br>
@@ -174,24 +168,23 @@
 </div>
 <div class="contenido row columns">
     <section class="row column">
-        <h3>Comments</h3>
+        <h3>Comentarios</h3>
         <ng-container>
             <ul class="simple-nested">
-                <li>
+                <li *ngFor="let item of comentario">
                     <div class="comment">
-                        <p><a href="">Usuario1</a></p>
-                        <em>Nov 11 2019</em>
-                        <p>Integer elementum turpis sed ante convallis, sit amet maximus orci faucibus. Praesent posuere
-                            tortor sit amet dolor semper sollicitudin.</p>
-                        <p><a href="">  Responder</a><a href="">  Reportar</a></p>
+                        <div class="row column">
+                            <em>{{item.fecha_publicacion | date: 'd/m/y'}}</em>
+                            <p>{{item.cuerpo_comentario}}</p>
+                            <p><a (click)="dismissRespuesta(item);">Responder </a>|<a (click)="reportar(item);">Reportar</a>| <a>Mostrar respuestas</a></p>
+                        </div>
                     </div>
-                    <ul>
+                    <!-- <ul>
                         <li>
                             <div class="comment">
                                 <p><a href="">Usuario1</a></p>
                                 <em>Nov 11 2019</em>
-                                <p>Integer elementum turpis sed ante convallis, sit amet maximus orci faucibus. Praesent
-                                    posuere tortor sit amet dolor semper sollicitudin.</p>
+                                <p>Integer elementum turpis sed ante convallis, sit amet maximus orci faucibus. Praesent posuere tortor sit amet dolor semper sollicitudin.</p>
                                 <p><a href="">Responder  </a><a href="">  Reportar</a></p>
                             </div>
                             <ul>
@@ -199,42 +192,47 @@
                                     <div class="comment">
                                         <p><a href="">Usuario1</a></p>
                                         <em>Nov 11 2019</em>
-                                        <p>Integer elementum turpis sed ante convallis, sit amet maximus orci faucibus.
-                                            Praesent
-                                            posuere tortor sit amet dolor semper sollicitudin.</p>
+                                        <p>Integer elementum turpis sed ante convallis, sit amet maximus orci faucibus. Praesent posuere tortor sit amet dolor semper sollicitudin.</p>
                                         <p><a href="">Responder </a> <a href="">  Reportar</a></p>
                                     </div>
                                 </li>
                             </ul>
                         </li>
-                    </ul>
+                    </ul> -->
                 </li>
                 <li>
-                    <div class="comment">
-                        <p><a href="">Usuario1</a></p>
-                        <em>Nov 11 2019</em>
-                        <p>Integer elementum turpis sed ante convallis, sit amet maximus orci faucibus. Praesent posuere
-                            tortor sit amet dolor semper sollicitudin.</p>
-                        <p><a href="">Responder  </a>  <a href="">  Reportar</a></p>
+                    <div class="row column" *ngIf="showRespuesta">
+                        <form class="comment-section-form" *ngIf="showBoxComment">
+                            <div class="comment-section-box">
+                                <div class="row">
+                                    <div class="small-12 column">
+                                        <label>Responder
+                                      <input rows="10" type="text" [(ngModel)]="newCommentHijo" name="newCommentHijo">
+                                    </label>
+                                        <button class="button expanded" (click)="createComentarioHijo();">Responder</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </li>
             </ul>
         </ng-container>
-        <form class="comment-section-form">
-                <div class="comment-section-box">
-                  <div class="row">
+        <form class="comment-section-form" *ngIf="showBoxComment">
+            <div class="comment-section-box">
+                <div class="row">
                     <div class="small-12 column">
-                      <h4>Deja tu comentario</h4>
-                      <label>Usuario
-                        <input type="text">
+                        <label>Comentario
+                        <input rows="10" type="text" [(ngModel)]="newComment" name="newComment">
                       </label>
-                      <label>Comentario
-                        <textarea rows="10" type="text"></textarea>
-                      </label>
-                      <button class="button expanded">enviar</button>
+                        <button class="button expanded" (click)="createComentario();">comentar</button>
                     </div>
-                  </div>
                 </div>
-              </form>
+            </div>
+        </form>
+        <div class="callout small success" *ngIf="showAlert" (click)="dismissAlert();">
+            <h4>{{titleAlert}}</h4>
+            <p>{{messageAlert}}</p>
+        </div>
     </section>
 </div>
