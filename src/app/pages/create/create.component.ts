@@ -94,6 +94,7 @@ export class CreateComponent implements OnInit {
       // primero creo el articulo e imprimo su valor en una constante
       await this.admin.createArticulo(articulo).toPromise().then( async (res) => {
         const articuloNew: any = res;
+        console.log(articuloNew);
         // si recibo un articulo
         if (articuloNew.id_articulo !== 0) {
            const parrafo: object[] = [];
@@ -126,6 +127,7 @@ export class CreateComponent implements OnInit {
                   console.log('Error al crear el articulo');
                 }
               });
+              console.log(element);
            }
 
            img.push({
@@ -143,16 +145,10 @@ export class CreateComponent implements OnInit {
             path: this.imagenC || 'https://placehold.it/400x370'
            });
 
-           if (this.plantilla === 2) {
-            img.push({
-              id_articulo: articuloNew.id_articulo,
-              path: this.imagenD || 'https://placehold.it/400x370'
-             });
-           }
-
            // tslint:disable-next-line:prefer-for-of
            for (let index = 0; index < img.length; index++) {
              const element = img[index];
+             console.log(element);
              await this.admin.createImagen(element).toPromise().then( restful => {
               console.log(restful);
             });

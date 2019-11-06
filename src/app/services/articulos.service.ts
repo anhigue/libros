@@ -27,4 +27,30 @@ export class ArticulosService {
   updateArticuloImagen(articulo) {
     return this.http.post(this.base + 'articulos/update.imagenes.php', articulo, { headers: this.headers });
   }
+
+  // obtiene un articulo publica
+  getOne(articulo) {
+    return this.http.post(this.base + 'publicados/read.one.php', articulo, { headers: this.headers });
+  }
+
+  // obtener los articulos con offset y limit
+  getLO(lo) {
+    return this.http.post(this.base + 'publicados/read.limit.offset.php', lo, { headers: this.headers });
+  }
+
+  // obtiene la informacion de un query dinamico
+  getDinamycQuery(sub) {
+    return this.http.post(this.base + 'publicados/read.dynamic.php', sub, { headers: this.headers });
+  }
+
+  // update visitas publicados/visita.php
+  updateVisitas(articulo) {
+    return this.http.post(this.base + 'publicados/visita.php', articulo, { headers: this.headers });
+  }
+
+  // obtiene los articulos destacados
+  getDestacados() {
+    return this.http.get(this.base + 'publicados/destacados.php', { headers: this.headers });
+  }
+
 }

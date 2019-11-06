@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdsService } from '../../services/ads.service';
+import { ArticulosService } from '../../services/articulos.service';
 
 @Component({
   selector: 'app-article',
@@ -21,7 +22,8 @@ export class ArticleComponent implements OnInit {
   // publicidad de la pagina
   adsObject = [];
 
-  constructor(private admin: AdminService, private param: ActivatedRoute, private ads: AdsService) {
+  constructor(private admin: AdminService, private param: ActivatedRoute, private ads: AdsService,
+              private art: ArticulosService) {
     this.getAllAds();
   }
 
@@ -35,7 +37,7 @@ export class ArticleComponent implements OnInit {
   }
 
   async getArticulo(art) {
-    await this.admin.getArticulo(art).toPromise().then( res => {
+    await this.art.getOne(art).toPromise().then( res => {
       this.articulo = res;
       console.log(this.articulo);
       this.tipo = this.articulo.articulo[0].plantilla_articulo;

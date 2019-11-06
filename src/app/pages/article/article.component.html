@@ -136,7 +136,7 @@
     <section class="row columns">
         <div class="row">
             <div class="large-6 medium-6 small-6 columns">
-                <img src="{{item.path}}" *ngFor="let item of articulo.imagenes">
+                <img src="{{articulo.imagenes[0].path}}">
             </div>
             <div class="large-6 medium-6 small-6 columns">
                 <p class="text-justify" *ngFor="let item of articulo.parrafos">

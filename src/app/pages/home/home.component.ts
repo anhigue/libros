@@ -3,6 +3,7 @@ import { AdminService } from '../../services/admin.service';
 import { Router } from '@angular/router';
 import { Util } from '../../../util/util';
 import { AdsService } from '../../services/ads.service';
+import { ArticulosService } from '../../services/articulos.service';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +24,8 @@ export class HomeComponent implements OnInit {
   // publicidad de la pagina
   adsObject = [];
 
-  constructor(private admin: AdminService, private route: Router, private ads: AdsService) {
+  constructor(private admin: AdminService, private route: Router, private ads: AdsService,
+              private art: ArticulosService) {
     this.getDestacados();
     this.limite = 5;
     this.offset = 0;
@@ -42,11 +44,11 @@ export class HomeComponent implements OnInit {
   }
 
   async getDestacados() {
-    await this.admin.getDestacados().toPromise().then( res => {this.destacados = res; });
+    await this.art.getDestacados().toPromise().then( res => {this.destacados = res; });
   }
 
   async getArticulos(rango) {
-    await this.admin.getArticuloLO(rango).toPromise().then( res => {this.articulosShow = res; });
+    await this.art.getLO(rango).toPromise().then( res => {this.articulosShow = res; });
   }
 
   async getCount() {
@@ -90,7 +92,7 @@ export class HomeComponent implements OnInit {
   async updateVista(id) {
     // tslint:disable-next-line:variable-name
     const id_ = {id_articulo: id.id_articulo};
-    await this.admin.updateVisita(id_).toPromise().then( res => {
+    await this.art.updateVisitas(id_).toPromise().then( (rest) => {
       this.goTo(id);
     });
   }

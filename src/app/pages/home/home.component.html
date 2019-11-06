@@ -39,7 +39,7 @@
             <article *ngFor="let u of articulosShow">
                 <div class="row">
                     <div class="large-6 columns">
-                        <p><img src="https://img.uefa.com/imgml/uefacom/ucl/social/og-default.jpg" alt="image for article" alt="article preview image"></p>
+                        <p><img src="{{u.imagenes[0].path}}" alt="image for article" alt="article preview image"></p>
                     </div>
                     <div class="large-6 columns">
                         <div *ngFor="let v of u.articulo">
