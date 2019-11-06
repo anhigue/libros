@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
+import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({
   selector: 'app-create',
@@ -39,7 +40,7 @@ export class CreateComponent implements OnInit {
   links: object[] = [];
   subcategorias: object[] = [];
 
-  constructor(private admin: AdminService) {
+  constructor(private admin: AdminService, private users: UsuariosService) {
     this.plantillaA = true;
     this.plantillaB = false;
     this.plantillaC = false;
@@ -80,7 +81,8 @@ export class CreateComponent implements OnInit {
     const articulo = {
       titulo: this.titulo,
       fk_id_estado: this.estado,
-      plantilla_articulo: this.plantilla
+      plantilla_articulo: this.plantilla,
+      id_usuario: this.users.getInfoUser().usuario.id_usuario
     };
 
     if (

@@ -26,6 +26,26 @@
                 <accordion-group [isDisabled]="true" heading="Acciones"></accordion-group>
                 <accordion-group heading="Mis articulos">
                     <p class="titles text-center">Articulos</p>
+                    <table class="table">
+                        <thead>
+                            <th>Titulo</th>
+                            <th>Fecha creación</th>
+                            <th>Visitas</th>
+                            <th>Editar</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of myArticulos">
+                                <td>{{item.titulo_articulo}}</td>
+                                <td>{{item.fecha_creacion | date: 'd/M/y'}}</td>
+                                <td>{{item.visita_articulo}}</td>
+                                <td>
+                                    <div class="button-group">
+                                        <button class="button warning small" (click)="editArticulo(item);">Editar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <a [routerLink]="['/create/article']" class="button success expanded">Crear Articulo</a>
                 </accordion-group>
                 <accordion-group heading="Administración" *ngIf="showAdministracion">

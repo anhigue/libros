@@ -1,5 +1,9 @@
 <div class="contenido">
     <section>
+        <div class="row column callout success" (click)="dismissAlert();" *ngIf="showAlert">
+            <h4>{{titleAlert}}</h4>
+            <p class="text-justify">{{messageAlert}}</p>
+        </div>
         <div class="row">
             <div class="row encabezado">
                 <h4 class="titulo">Moderar articulo</h4>
@@ -7,93 +11,28 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Id Articulo</th>
                         <th>Nombre Articulo</th>
-                        <th>Subscripcion</th>
-                        <th>Estado</th>
+                        <th>Fecha Creación</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
+                    <tr *ngFor="let item of moderacionArticulo">
+                        <td>{{item.titulo_articulo}}</td>
                         <td>
-                            Articulo 1
-                        </td>
-                        <td>
-                            Premium
-                        </td>
-                        <td>
-                            por publicar
+                            {{item.fecha_creacion | date: 'd/M/y'}}
                         </td>
                         <td>
                             <button class="button success" data-open="publicar-ad">
-                                <i class="fi-pencil">publicar</i>
+                                <i class="fi-pencil" (click)="publishedArticulo(item);">publicar</i>
                             </button>
-                            <button class="button warning" data-open="edtar-ad">
-                                <i class="fi-trash">editar</i>
-                            </button>
-                            <button class="button alert" data-open="del-ad">
-                                <i class="fi-trash">eliminar</i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>
-                            Articulo 2
-                        </td>
-                        <td>
-                            Premium
-                        </td>
-                        <td>
-                            por publicar
-                        </td>
-                        <td>
-                            <button class="button success" data-open="publicar-ad">
-                                <i class="fi-pencil">publicar</i>
-                            </button>
-                            <button class="button warning" data-open="edtar-ad">
-                                <i class="fi-trash">editar</i>
-                            </button>
-                            <button class="button alert" data-open="del-ad">
-                                <i class="fi-trash">eliminar</i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>
-                            Articulo 3
-                        </td>
-                        <td>
-                            Gratiuito
-                        </td>
-                        <td>
-                            por publicar
-                        </td>
-                        <td>
-                            <button class="button success" data-open="publicar-ad">
-                                <i class="fi-pencil">publicar</i>
-                            </button>
-                            <button class="button warning" data-open="edtar-ad">
-                                <i class="fi-trash">editar</i>
-                            </button>
-                            <button class="button alert" data-open="del-ad">
-                                <i class="fi-trash">eliminar</i>
+                            <button class="button warning" data-open="edtar-ad" (click)="openModal(viewArticle,item)">
+                                <i class="fi-trash">Ver</i>
                             </button>
                         </td>
                     </tr>
                 </tbody>
             </table>
-
-        </div>
-        <div class="row">
-            <div class="large-7 columns">
-                <button class="button success" data-open="crear-cat">
-                    <i class="fi-plus"> guardar cambios</i>
-                </button>
-            </div>
         </div>
     </section>
 
@@ -105,7 +44,7 @@
             <table>
                 <thead>
                     <tr>
-                            <th>Veces reportado</th>
+                        <th>Veces reportado</th>
                         <th>Id Comentario</th>
                         <th>Descripcion</th>
                         <th>Usuario</th>
@@ -115,11 +54,10 @@
                 </thead>
                 <tbody>
                     <tr>
-                            <td>30</td>
+                        <td>30</td>
                         <td>1</td>
                         <td>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in sodales augue. Nam
-                            aliquam nec metus eu pharetra. Ut in nunc commodo, interdum nibh eu, faucibus tellus.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in sodales augue. Nam aliquam nec metus eu pharetra. Ut in nunc commodo, interdum nibh eu, faucibus tellus.
                         </td>
                         <td>
                             Reginald Juarez
@@ -128,58 +66,8 @@
                             censurado
                         </td>
                         <td>
-                                <button class="button success" data-open="edtar-ad">
+                            <button class="button success" data-open="edtar-ad">
                                         <i class="fi-trash">habilitar</i>
-                                    </button>
-                            <button class="button warning" data-open="edtar-ad">
-                                <i class="fi-trash">bloquear</i>
-                            </button>
-                            <button class="button alert" data-open="del-ad">
-                                <i class="fi-trash">eliminar</i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                            <td>26</td>
-                        <td>2</td>
-                        <td>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in sodales augue. Nam
-                            aliquam nec metus eu pharetra. Ut in nunc commodo, interdum nibh eu, faucibus tellus.
-                        </td>
-                        <td>
-                            Luis Lopez
-                        </td>
-                        <td>
-                            censurado
-                        </td>
-                        <td>
-                                <button class="button success" data-open="edtar-ad">
-                                        <i class="fi-trash">habilitado</i>
-                                    </button>
-                            <button class="button warning" data-open="edtar-ad">
-                                <i class="fi-trash">bloquear</i>
-                            </button>
-                            <button class="button alert" data-open="del-ad">
-                                <i class="fi-trash">eliminar</i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                            <td>45</td>
-                        <td>3</td>
-                        <td>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in sodales augue. Nam
-                            aliquam nec metus eu pharetra. Ut in nunc commodo, interdum nibh eu, faucibus tellus.
-                        </td>
-                        <td>
-                            Pedro Cuevas
-                        </td>
-                        <td>
-                            censurado
-                        </td>
-                        <td>
-                                <button class="button success" data-open="edtar-ad">
-                                        <i class="fi-trash">habilitado</i>
                                     </button>
                             <button class="button warning" data-open="edtar-ad">
                                 <i class="fi-trash">bloquear</i>
@@ -191,7 +79,6 @@
                     </tr>
                 </tbody>
             </table>
-
         </div>
         <div class="row">
             <div class="large-7 columns">
@@ -202,3 +89,36 @@
         </div>
     </section>
 </div>
+
+<ng-template #viewArticle>
+    <div class="row">
+        <section class="row columns">
+            <h4 class="text-center titles">Articulo Editado</h4>
+            <h5 class="text-center">{{articuloShow.articulo[0].titulo_articulo}}</h5>
+        </section>
+        <hr>
+        <section>
+            <h4 class="text-center">Parrafos</h4>
+            <div class="row small-up-1 medium-up-3 large-up-3">
+                <div class="column" *ngFor="let item of articuloShow.parrafos">
+                    <p>
+                        {{item.parrafo_articulo}}
+                        <br>
+                    </p>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <section>
+            <h4 class="text-center">Imagenes</h4>
+            <div class="row small-up-1 medium-up-3 large-up-3">
+                <div class="column" *ngFor="let item of articuloShow.imagenes">
+                    <img src="{{item.path}}" width="100" height="100">
+                </div>
+            </div>
+        </section>
+    </div>
+    <button class="close-button" (click)="modalRef.hide();" aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</ng-template>

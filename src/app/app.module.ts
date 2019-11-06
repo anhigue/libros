@@ -41,6 +41,7 @@ import { CreateComponent } from './pages/create/create.component';
 import { ModalMessageComponent } from './components/modal-message/modal-message.component';
 import { MessageService } from './services/message.service';
 import { FilterPipeModule } from 'ngx-filter-pipe';
+import { UpdateArticuloComponent } from './pages/update-articulo/update-articulo.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     AboutComponent,
     AdsComponent,
     CreateComponent,
-    ModalMessageComponent
+    ModalMessageComponent,
+    UpdateArticuloComponent
   ],
   imports: [
     BrowserModule,

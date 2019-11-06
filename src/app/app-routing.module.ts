@@ -13,6 +13,7 @@ import { ArticleComponent } from './pages/article/article.component';
 import { AdsComponent } from './pages/ads/ads.component';
 import { CreateComponent } from './pages/create/create.component';
 import { LoginGuard } from './guard/login.guard';
+import { UpdateArticuloComponent } from './pages/update-articulo/update-articulo.component';
 
 const routes: Routes = [
   {
@@ -67,6 +68,11 @@ const routes: Routes = [
   {
     path: 'create/article',
     component: CreateComponent,
+    canActivate: [LoginGuard]
+  },
+  {
+    path: 'update/article/:id',
+    component: UpdateArticuloComponent,
     canActivate: [LoginGuard]
   }
 ];

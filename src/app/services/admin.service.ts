@@ -224,4 +224,9 @@ export class AdminService {
   getByDinamicQuery(subcategoria) {
     return this.http.post(this.base + 'administracion/read.dinamic.query.php', subcategoria, { headers: this.headers });
   }
+
+  // obtiene los articulos de un solo usuario
+  getMyArticulos(usuario) {
+    return this.http.post(this.base + 'articulos/read.user.php', usuario, { headers: this.headers });
+  }
 }

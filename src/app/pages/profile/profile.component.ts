@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { BsModalRef, BsModalService } from 'ngx-foundation';
 import { UsuariosService } from '../../services/usuarios.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -26,12 +27,17 @@ export class ProfileComponent implements OnInit {
 
   subscriocionCreate: any;
 
-  constructor(private admin: AdminService, private modalService: BsModalService, private users: UsuariosService) {
+  // my articles
+  myArticulos: any;
+
+  constructor(private admin: AdminService, private modalService: BsModalService, private users: UsuariosService,
+              private router: Router) {
   }
 
   async ngOnInit() {
     await this.getUsuario();
     await this.getTipoSub();
+    await this.getMyArt();
   }
 
   async getUsuario() {
@@ -79,5 +85,18 @@ export class ProfileComponent implements OnInit {
 
   async out() {
     await this.users.logoutUser();
+  }
+
+  async getMyArt() {
+    await this.admin.getMyArticulos({id_usuario: this.usuario.usuario.id_usuario}).toPromise().then( response => {
+      if (response) {
+        this.myArticulos = response;
+        console.log(this.myArticulos);
+      }
+    }).catch( error => console.log(error));
+  }
+
+  editArticulo(articulo) {
+    this.router.navigateByUrl('update/article/' + articulo.id_articulo);
   }
 }
