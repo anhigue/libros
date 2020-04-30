@@ -20,7 +20,7 @@
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
     "foundation-sites": "^6.5.3",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ngx-filter-pipe": "^2.1.2",
     "ngx-foundation": "^1.0.8",
     "rxjs": "~6.4.0",
